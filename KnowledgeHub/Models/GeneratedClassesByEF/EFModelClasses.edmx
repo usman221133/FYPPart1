@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Login_Table">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Viewer_ID" Type="int" Nullable="false" />
+          <Property Name="Presenter_ID" Type="int" Nullable="false" />
+          <Property Name="Login_Password" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Presenter_Table">
+          <Key>
+            <PropertyRef Name="Presenter_ID" />
+          </Key>
+          <Property Name="Presenter_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Presenter_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Presenter_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Presenter_Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Presenter_D_O_Birth" Type="nvarchar" MaxLength="25" />
+          <Property Name="Presenter_Ph_Num" Type="nvarchar" MaxLength="25" />
+          <Property Name="Presenter_Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Presenter_Prof_Picture" Type="image" />
+          <Property Name="Presenter_Prof_Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Presenter_Prof_Experience" Type="nvarchar" MaxLength="200" />
+          <Property Name="Presenter_Prof_Rating" Type="float" />
+          <Property Name="Presenter_Prof_Course_Outline" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Viewer_Table">
+          <Key>
+            <PropertyRef Name="Viewer_ID" />
+          </Key>
+          <Property Name="Viewer_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Viewer_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Viewer_City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Viewer_Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Viewer_D_O_Birth" Type="nvarchar" MaxLength="25" />
+          <Property Name="Viewer_Ph_Num" Type="nvarchar" MaxLength="25" />
+          <Property Name="Viewer_Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Viewer_Login_Date_Time" Type="datetime2" Precision="7" />
+          <Property Name="Viewer_Logout_Date_Time" Type="datetime2" Precision="7" />
+          <Property Name="Viewer_image" Type="image" />
+        </EntityType>
+        <Association Name="FK_Login_Table_Login_Table">
+          <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
+          <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viewer_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Principal>
+            <Dependent Role="Login_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Table_Presenter_Table">
+          <End Role="Presenter_Table" Type="Self.Presenter_Table" Multiplicity="1" />
+          <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presenter_Table">
+              <PropertyRef Name="Presenter_ID" />
+            </Principal>
+            <Dependent Role="Login_Table">
+              <PropertyRef Name="Presenter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnwoledgeHubModelStoreContainer">
+          <EntitySet Name="Login_Table" EntityType="Self.Login_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Login_Table_Login_Table" Association="Self.FK_Login_Table_Login_Table">
+            <End Role="Viewer_Table" EntitySet="Viewer_Table" />
+            <End Role="Login_Table" EntitySet="Login_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Table_Presenter_Table" Association="Self.FK_Login_Table_Presenter_Table">
+            <End Role="Presenter_Table" EntitySet="Presenter_Table" />
+            <End Role="Login_Table" EntitySet="Login_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="KnwoledgeHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Login_Table">
+          <Key>
+            <PropertyRef Name="Login_ID" />
+          </Key>
+          <Property Name="Login_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Viewer_ID" Type="Int32" Nullable="false" />
+          <Property Name="Presenter_ID" Type="Int32" Nullable="false" />
+          <Property Name="Login_Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Viewer_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Login_Table" ToRole="Viewer_Table" />
+          <NavigationProperty Name="Presenter_Table" Relationship="Self.FK_Login_Table_Presenter_Table" FromRole="Login_Table" ToRole="Presenter_Table" />
+        </EntityType>
+        <EntityType Name="Presenter_Table">
+          <Key>
+            <PropertyRef Name="Presenter_ID" />
+          </Key>
+          <Property Name="Presenter_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Presenter_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_D_O_Birth" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Ph_Num" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Prof_Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Presenter_Prof_Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Prof_Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Presenter_Prof_Rating" Type="Double" />
+          <Property Name="Presenter_Prof_Course_Outline" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Presenter_Table" FromRole="Presenter_Table" ToRole="Login_Table" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Viewer_Table">
+          <Key>
+            <PropertyRef Name="Viewer_ID" />
+          </Key>
+          <Property Name="Viewer_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Viewer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_D_O_Birth" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_Ph_Num" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Viewer_Login_Date_Time" Type="DateTime" Precision="7" />
+          <Property Name="Viewer_Logout_Date_Time" Type="DateTime" Precision="7" />
+          <Property Name="Viewer_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Viewer_Table" ToRole="Login_Table" />
+        </EntityType>
+        <Association Name="FK_Login_Table_Login_Table">
+          <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
+          <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viewer_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Principal>
+            <Dependent Role="Login_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Login_Table_Presenter_Table">
+          <End Role="Presenter_Table" Type="Self.Presenter_Table" Multiplicity="1" />
+          <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presenter_Table">
+              <PropertyRef Name="Presenter_ID" />
+            </Principal>
+            <Dependent Role="Login_Table">
+              <PropertyRef Name="Presenter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="KnwoledgeHubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Login_Table" EntityType="Self.Login_Table" />
+          <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" />
+          <AssociationSet Name="FK_Login_Table_Login_Table" Association="Self.FK_Login_Table_Login_Table">
+            <End Role="Viewer_Table" EntitySet="Viewer_Table" />
+            <End Role="Login_Table" EntitySet="Login_Table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Login_Table_Presenter_Table" Association="Self.FK_Login_Table_Presenter_Table">
+            <End Role="Presenter_Table" EntitySet="Presenter_Table" />
+            <End Role="Login_Table" EntitySet="Login_Table" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="KnwoledgeHubModelStoreContainer" CdmEntityContainer="KnwoledgeHubEntities">
+          <EntitySetMapping Name="Login_Table">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Login_Table">
+              <MappingFragment StoreEntitySet="Login_Table">
+                <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
+                <ScalarProperty Name="Viewer_ID" ColumnName="Viewer_ID" />
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Presenter_Table">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Presenter_Table">
+              <MappingFragment StoreEntitySet="Presenter_Table">
+                <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="Presenter_Name" ColumnName="Presenter_Name" />
+                <ScalarProperty Name="Presenter_City" ColumnName="Presenter_City" />
+                <ScalarProperty Name="Presenter_Email" ColumnName="Presenter_Email" />
+                <ScalarProperty Name="Presenter_D_O_Birth" ColumnName="Presenter_D_O_Birth" />
+                <ScalarProperty Name="Presenter_Ph_Num" ColumnName="Presenter_Ph_Num" />
+                <ScalarProperty Name="Presenter_Gender" ColumnName="Presenter_Gender" />
+                <ScalarProperty Name="Presenter_Prof_Picture" ColumnName="Presenter_Prof_Picture" />
+                <ScalarProperty Name="Presenter_Prof_Description" ColumnName="Presenter_Prof_Description" />
+                <ScalarProperty Name="Presenter_Prof_Experience" ColumnName="Presenter_Prof_Experience" />
+                <ScalarProperty Name="Presenter_Prof_Rating" ColumnName="Presenter_Prof_Rating" />
+                <ScalarProperty Name="Presenter_Prof_Course_Outline" ColumnName="Presenter_Prof_Course_Outline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Viewer_Table">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Viewer_Table">
+              <MappingFragment StoreEntitySet="Viewer_Table">
+                <ScalarProperty Name="Viewer_ID" ColumnName="Viewer_ID" />
+                <ScalarProperty Name="Viewer_Name" ColumnName="Viewer_Name" />
+                <ScalarProperty Name="Viewer_City" ColumnName="Viewer_City" />
+                <ScalarProperty Name="Viewer_Email" ColumnName="Viewer_Email" />
+                <ScalarProperty Name="Viewer_D_O_Birth" ColumnName="Viewer_D_O_Birth" />
+                <ScalarProperty Name="Viewer_Ph_Num" ColumnName="Viewer_Ph_Num" />
+                <ScalarProperty Name="Viewer_Gender" ColumnName="Viewer_Gender" />
+                <ScalarProperty Name="Viewer_Login_Date_Time" ColumnName="Viewer_Login_Date_Time" />
+                <ScalarProperty Name="Viewer_Logout_Date_Time" ColumnName="Viewer_Logout_Date_Time" />
+                <ScalarProperty Name="Viewer_image" ColumnName="Viewer_image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
