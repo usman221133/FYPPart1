@@ -22,3 +22,112 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+/*Front Page css*/
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+header
+{
+    background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url(Images/1.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+ul
+{
+    list-style-type: none;
+    float: right;
+    margin-top: 25px;
+}
+
+ul li
+{
+    display: inline-block;
+}
+
+ul li a
+{
+    text-decoration: none;
+    color: white;
+    padding: 5px 20px;
+    border: 1px solid transparent;
+    transition: 0.6s ease;
+}
+
+ul li a:hover
+{
+    background-color: white;
+    color: black;
+}
+
+.logo img
+{
+    float: left;
+    width: 150px;
+    height: auto;
+}
+
+.main
+{
+    max-width: 1200px;
+    margin: auto;
+}
+
+.title
+{
+    position: absolute;
+    top: 47%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+
+.title h1
+{
+    color: white;
+    font-size: 72px;
+}
+
+.slogan
+{
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+
+.slogan h1
+{
+    color: white;
+    font-size: 40px;
+}
+
+.button
+{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform:translate(-50%, -50%);
+}
+
+.btn
+{
+    border: 1px solid white;
+    padding: 10px 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.btn:hover
+{
+    background-color: white;
+    color: black;
+}
+
+/* end here*/
