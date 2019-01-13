@@ -17,6 +17,7 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public int Login_ID { get; set; }
         public int Viewer_ID { get; set; }
         public int Presenter_ID { get; set; }
+        public string UserName { get; set; }
         public string Login_Password { get; set; }
     
         public virtual Viewer_Table Viewer_Table { get; set; }

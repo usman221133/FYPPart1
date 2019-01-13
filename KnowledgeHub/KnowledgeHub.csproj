@@ -259,6 +259,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Image\1.jpg" />
     <Content Include="Image\OriginalLogo.png" />
+    <Content Include="Image\pic1.jpg" />
     <Content Include="Models\GeneratedClassesByEF\EFModelClasses.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EFModelClasses.edmx</DependentUpon>

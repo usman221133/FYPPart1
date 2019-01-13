@@ -12,6 +12,7 @@
           <Property Name="Login_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Viewer_ID" Type="int" Nullable="false" />
           <Property Name="Presenter_ID" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Login_Password" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Presenter_Table">
@@ -106,6 +107,7 @@
           <Property Name="Login_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Viewer_ID" Type="Int32" Nullable="false" />
           <Property Name="Presenter_ID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Login_Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Viewer_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Login_Table" ToRole="Viewer_Table" />
           <NavigationProperty Name="Presenter_Table" Relationship="Self.FK_Login_Table_Presenter_Table" FromRole="Login_Table" ToRole="Presenter_Table" />
@@ -204,6 +206,7 @@
                 <ScalarProperty Name="Login_ID" ColumnName="Login_ID" />
                 <ScalarProperty Name="Viewer_ID" ColumnName="Viewer_ID" />
                 <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
               </MappingFragment>
             </EntityTypeMapping>

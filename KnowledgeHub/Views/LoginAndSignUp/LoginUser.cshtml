@@ -4,26 +4,41 @@
     ViewBag.Title = "LoginUser";
 }
 
+@using(Html.BeginForm())
+{
 
 
-    <title>Login Form Design</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link href="LoginPage.css" rel="stylesheet" />
-    <body>
-        <div class="loginbox">
-            <img src="Images/avatar.png" class="avatar">
-            <h1>Login Here</h1>
-            <form>
-                <p>Username</p>
-                <input type="text" name="" placeholder="Enter Username">
-                <p>Password</p>
-                <input type="password" name="" placeholder="Enter Password">
-                <input type="submit" name="" value="Login">
-                <a href="#">Lost your password?</a><br>
-                <a href="#">Don't have an account?</a>
-            </form>
+<title>Login Form Design</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="LoginPage.css" rel="stylesheet" />
+<body style="background-image:url(/Image/pic1.jpg); background-size: 100%">
+    <div class="loginbox">
+        <img src="Images/avatar.png" class="avatar">
+        <h1>Login Here</h1>
+        <form>
+            <p>Username</p>
+            @*<input type="text" name="" placeholder="Enter Username">*@
+            @Html.EditorFor(model => model.Login_ID, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Username", @type = "text" } })
 
-        </div>
 
-    </body>
+            <p>Password</p>
+            @*<input type="password" name="" placeholder="Enter Password">*@
+            @Html.EditorFor(model => model.Login_Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password", @type = "text" } })
+
+
+            <input type="submit" name="" value="Login">
+           
+            <a href="#">Lost your password?</a><br>
+            <a href="#">Don't have an account?</a>
+        </form>
+
+    </div>
+
+</body>
+
+
+
+}
+
+
 
