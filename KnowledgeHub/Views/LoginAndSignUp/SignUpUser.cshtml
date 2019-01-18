@@ -1,119 +1,264 @@
 ﻿@model KnowledgeHub.Models.GeneratedClassesByEF.Presenter_Table
 
 @{
-    ViewBag.Title = "SignUpUser";
+    ViewBag.Title = "Sign Up";
 }
 
-<h2>SignUpUser</h2>
+<link href="~/Content/SignUp.css" rel="stylesheet" />
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Presenter_Table</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_ID, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_ID, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @*<link href="SignUpPage.css" rel="stylesheet" />*@
+    <body>
+        <div class="signupbox">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <img src="~/Image/avatar.png" class="avatar">
+            <h1>Sign Up</h1>
+            <form>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_City, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_City, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_City, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.EditorFor(model => model.Presenter_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @type = "text" } })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.EditorFor(model => model.Presenter_Ph_Num, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contact No", @type = "text" } })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_D_O_Birth, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_D_O_Birth, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_D_O_Birth, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                @Html.EditorFor(model => model.Presenter_Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Addrerss", @type = "text" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "Password" } })
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @type = "Password" } })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Ph_Num, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Ph_Num, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Ph_Num, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <h4>Date of Birth</h4>
+                <div class="dateofbirth">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Gender, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Gender, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Gender, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @*<select name="day" id="dayddl">
+                            <option value="">Day</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Prof_Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Prof_Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Prof_Description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @*days*@
+                    @Html.DropDownListFor(x => x.DOB_Days, new[]{
+                            new SelectListItem(){ Text = "1", Value = "1"},
+                            new SelectListItem(){ Text = "2", Value = "2"},
+                            new SelectListItem(){ Text = "3", Value = "3"},
+                            new SelectListItem(){ Text = "4", Value = "4"},
+                            new SelectListItem(){ Text = "5", Value = "5"},
+                            new SelectListItem(){ Text = "6", Value = "6"},
+                            new SelectListItem(){ Text = "7", Value = "7"},
+                            new SelectListItem(){ Text = "8", Value = "8"},
+                            new SelectListItem(){ Text = "9", Value = "9"},
+                            new SelectListItem(){ Text = "10", Value = "10"},
+                            new SelectListItem(){ Text = "11", Value = "11"},
+                            new SelectListItem(){ Text = "12", Value = "12"},
+                            new SelectListItem(){ Text = "13", Value = "13"},
+                            new SelectListItem(){ Text = "14", Value = "14"},
+                            new SelectListItem(){ Text = "15", Value = "15"},
+                            new SelectListItem(){ Text = "16", Value = "16"},
+                            new SelectListItem(){ Text = "17", Value = "17"},
+                            new SelectListItem(){ Text = "18", Value = "18"},
+                            new SelectListItem(){ Text = "19", Value = "19"},
+                            new SelectListItem(){ Text = "20", Value = "20"},
+                            new SelectListItem(){ Text = "21", Value = "21"},
+                            new SelectListItem(){ Text = "22", Value = "22"},
+                            new SelectListItem(){ Text = "23", Value = "23"},
+                            new SelectListItem(){ Text = "24", Value = "24"},
+                            new SelectListItem(){ Text = "25", Value = "25"},
+                            new SelectListItem(){ Text = "26", Value = "26"},
+                            new SelectListItem(){ Text = "27", Value = "27"},
+                            new SelectListItem(){ Text = "28", Value = "28"},
+                            new SelectListItem(){ Text = "29", Value = "29"},
+                            new SelectListItem(){ Text = "30", Value = "30"},
+                            new SelectListItem(){ Text = "31", Value = "31"}
+                            }, "Day", new { })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Prof_Experience, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Prof_Experience, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Prof_Experience, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Prof_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Prof_Rating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Prof_Rating, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    @*Month*@
+                    @Html.DropDownListFor(x => x.DOB_Months, new[]{
+                               new SelectListItem(){ Text = "1", Value = "1"},
+                            new SelectListItem(){ Text = "2", Value = "2"},
+                            new SelectListItem(){ Text = "3", Value = "3"},
+                            new SelectListItem(){ Text = "4", Value = "4"},
+                            new SelectListItem(){ Text = "5", Value = "5"},
+                            new SelectListItem(){ Text = "6", Value = "6"},
+                            new SelectListItem(){ Text = "7", Value = "7"},
+                            new SelectListItem(){ Text = "8", Value = "8"},
+                            new SelectListItem(){ Text = "9", Value = "9"},
+                            new SelectListItem(){ Text = "10", Value = "10"},
+                            }, "Month", new { })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Presenter_Prof_Course_Outline, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Presenter_Prof_Course_Outline, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Presenter_Prof_Course_Outline, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+                    @*Year*@
+                    @Html.DropDownListFor(x => x.DOB_Year, new[]{
+                            new SelectListItem(){ Text = "1990", Value = "1990"},
+                            new SelectListItem(){ Text = "1991", Value = "1991"},
+                            new SelectListItem(){ Text = "1992", Value = "1992"},
+                            new SelectListItem(){ Text = "1993", Value = "1993"},
+                            new SelectListItem(){ Text = "1994", Value = "1994"},
+                            new SelectListItem(){ Text = "1995", Value = "1995"},
+                            new SelectListItem(){ Text = "1996", Value = "1996"},
+                            new SelectListItem(){ Text = "1997", Value = "1997"},
+                            new SelectListItem(){ Text = "1998", Value = "1998"},
+                            new SelectListItem(){ Text = "1999", Value = "1999"},
+                            new SelectListItem(){ Text = "2000", Value = "2000"},
+                            new SelectListItem(){ Text = "2001", Value = "2001"},
+                            new SelectListItem(){ Text = "2002", Value = "2002"},
+                            new SelectListItem(){ Text = "2003", Value = "2003"},
+                            new SelectListItem(){ Text = "2004", Value = "2004"},
+                            new SelectListItem(){ Text = "2005", Value = "2005"},
+                            new SelectListItem(){ Text = "2006", Value = "2006"},
+                            new SelectListItem(){ Text = "2007", Value = "2007"},
+                            new SelectListItem(){ Text = "2008", Value = "2008"},
+                            new SelectListItem(){ Text = "2009", Value = "2009"},
+                            new SelectListItem(){ Text = "2010", Value = "2010"},
+                            new SelectListItem(){ Text = "2011", Value = "2011"},
+                            new SelectListItem(){ Text = "2012", Value = "2012"},
+                            new SelectListItem(){ Text = "2013", Value = "2013"},
+                            new SelectListItem(){ Text = "2014", Value = "2014"},
+                            new SelectListItem(){ Text = "2015", Value = "2015"},
+                            new SelectListItem(){ Text = "2016", Value = "2016"},
+                            new SelectListItem(){ Text = "2017", Value = "2017"},
+                            new SelectListItem(){ Text = "2018", Value = "2018"},
+                            new SelectListItem(){ Text = "2019", Value = "2019"},
+
+                            }, "Year", new { })
+
+                    @*<select name="month" id="monthddl">
+
+                            <option value="">Month</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>*@
+
+                    @*<select name="year" id="blah">
+                        <option value="">Year</option>
+                        <option value="1990">1990</option>
+                        <option value="1991">1991</option>
+                        <option value="1992">1992</option>
+                        <option value="1993">1993</option>
+                        <option value="1994">1994</option>
+                        <option value="1995">1995</option>
+                        <option value="1996">1996</option>
+                        <option value="1997">1997</option>
+                        <option value="1998">1998</option>
+                        <option value="1999">1999</option>
+                        <option value="2000">2000</option>
+                        <option value="2001">2001</option>
+                        <option value="2002">2002</option>
+                        <option value="2003">2003</option>
+                        <option value="2004">2004</option>
+                        <option value="2005">2005</option>
+                        <option value="2006">2006</option>
+                        <option value="2007">2007</option>
+                        <option value="2008">2008</option>
+                        <option value="2009">2009</option>
+                        <option value="2010">2010</option>
+                        <option value="2011">2011</option>
+                        <option value="2012">2012</option>
+                        <option value="2013">2013</option>
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                    </select>*@
+                </div>
+
+
+                <h4>Gender</h4>
+                @*<input type="radio" name="gender" value="male" class="gender" style="margin 5px auto
+                       width 15px;
+                       ">*@
+                @Html.RadioButtonFor(m => m.Presenter_Gender, "Male", new { })
+                <lable style="margin: 0 10px 0 3px;"> Male</lable><br>
+                @*<input type="radio" name="gender" value="female" class="gender" style="
+                       margin 5px auto;
+                       width 15px;
+                       ">*@
+                @Html.RadioButtonFor(m => m.Presenter_Gender, "Female", new { })
+<lable style="margin 0 10px 5px 3px;">Female</lable>
+                
+               
+               
+
+
+                <div class="city">
+                    <h4>City</h4>
+                    @*<select name="city" id="city1">
+                        <option value="">Select</option>
+                        <option value="ka">Karachi</option>
+                        <option value="la">Lahore</option>
+                        <option value="Is">Islamabad</option>
+                        <option value="Mu">Multan</option>
+                    </select>*@
+                    @Html.DropDownListFor(x => x.Presenter_City, new[]{
+                            new SelectListItem(){ Text = "Karachi", Value = "Karachi"},
+                            new SelectListItem(){ Text = "Lahore", Value = "Lahore"},
+                            new SelectListItem(){ Text = "Islamabad", Value = "Islamabad"},
+                            new SelectListItem(){ Text = "Multan", Value = "Multan"}
+                            }, "Select", new { })
+                </div>
+
+                <div class="Signas">
+                    <h4>Sign as</h4>
+                    @*<select name="signas" id="signas1">
+                        <option value="">Select</option>
+                        <option value="st">Student</option>
+                        <option value="te">Teacher</option>
+                    </select>*@
+                    @Html.DropDownListFor(x => x.LoginAs, new[]{
+                            new SelectListItem(){ Text = "Student", Value = "Student"},
+                            new SelectListItem(){ Text = "Teacher", Value = "Teacher"}
+                            }, "Select", new { })
+                </div>
+
+
+            </form>
+            <input type="submit" name="" value="Sign Up">
+
+    </body>
+
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

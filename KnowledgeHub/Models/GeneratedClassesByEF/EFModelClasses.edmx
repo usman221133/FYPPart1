@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Login_Table">
           <Key>
             <PropertyRef Name="Login_ID" />
@@ -23,7 +23,8 @@
           <Property Name="Presenter_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Presenter_City" Type="nvarchar" MaxLength="50" />
           <Property Name="Presenter_Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Presenter_D_O_Birth" Type="nvarchar" MaxLength="25" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
           <Property Name="Presenter_Ph_Num" Type="nvarchar" MaxLength="25" />
           <Property Name="Presenter_Gender" Type="nvarchar" MaxLength="10" />
           <Property Name="Presenter_Prof_Picture" Type="image" />
@@ -31,6 +32,10 @@
           <Property Name="Presenter_Prof_Experience" Type="nvarchar" MaxLength="200" />
           <Property Name="Presenter_Prof_Rating" Type="float" />
           <Property Name="Presenter_Prof_Course_Outline" Type="nchar" MaxLength="100" />
+          <Property Name="DOB_Days" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_Months" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_Year" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoginAs" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -42,6 +47,20 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Viewer_Table">
           <Key>
             <PropertyRef Name="Viewer_ID" />
@@ -50,12 +69,16 @@
           <Property Name="Viewer_Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Viewer_City" Type="nvarchar" MaxLength="50" />
           <Property Name="Viewer_Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Viewer_D_O_Birth" Type="nvarchar" MaxLength="25" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="ConfirmPassword" Type="nvarchar" MaxLength="50" />
           <Property Name="Viewer_Ph_Num" Type="nvarchar" MaxLength="25" />
           <Property Name="Viewer_Gender" Type="nvarchar" MaxLength="10" />
           <Property Name="Viewer_Login_Date_Time" Type="datetime2" Precision="7" />
           <Property Name="Viewer_Logout_Date_Time" Type="datetime2" Precision="7" />
           <Property Name="Viewer_image" Type="image" />
+          <Property Name="DOB_Days" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_Months" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOB_Year" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Login_Table_Login_Table">
           <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
@@ -85,6 +108,7 @@
           <EntitySet Name="Login_Table" EntityType="Self.Login_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Login_Table_Login_Table" Association="Self.FK_Login_Table_Login_Table">
             <End Role="Viewer_Table" EntitySet="Viewer_Table" />
@@ -95,8 +119,7 @@
             <End Role="Login_Table" EntitySet="Login_Table" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KnwoledgeHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -120,7 +143,8 @@
           <Property Name="Presenter_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Presenter_D_O_Birth" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_Ph_Num" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_Prof_Picture" Type="Binary" MaxLength="Max" FixedLength="false" />
@@ -128,6 +152,10 @@
           <Property Name="Presenter_Prof_Experience" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Presenter_Prof_Rating" Type="Double" />
           <Property Name="Presenter_Prof_Course_Outline" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="DOB_Days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Months" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoginAs" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Presenter_Table" FromRole="Presenter_Table" ToRole="Login_Table" />
         </EntityType>
         <EntityType Name="sysdiagram">
@@ -148,12 +176,16 @@
           <Property Name="Viewer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Viewer_City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Viewer_Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Viewer_D_O_Birth" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Viewer_Ph_Num" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Viewer_Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="Viewer_Login_Date_Time" Type="DateTime" Precision="7" />
           <Property Name="Viewer_Logout_Date_Time" Type="DateTime" Precision="7" />
           <Property Name="Viewer_image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="DOB_Days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Months" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOB_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Viewer_Table" ToRole="Login_Table" />
         </EntityType>
         <Association Name="FK_Login_Table_Login_Table">
@@ -193,7 +225,22 @@
             <End Role="Presenter_Table" EntitySet="Presenter_Table" />
             <End Role="Login_Table" EntitySet="Login_Table" />
           </AssociationSet>
+          <EntitySet Name="Users" EntityType="KnwoledgeHubModel.User" />
         </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -218,7 +265,8 @@
                 <ScalarProperty Name="Presenter_Name" ColumnName="Presenter_Name" />
                 <ScalarProperty Name="Presenter_City" ColumnName="Presenter_City" />
                 <ScalarProperty Name="Presenter_Email" ColumnName="Presenter_Email" />
-                <ScalarProperty Name="Presenter_D_O_Birth" ColumnName="Presenter_D_O_Birth" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
                 <ScalarProperty Name="Presenter_Ph_Num" ColumnName="Presenter_Ph_Num" />
                 <ScalarProperty Name="Presenter_Gender" ColumnName="Presenter_Gender" />
                 <ScalarProperty Name="Presenter_Prof_Picture" ColumnName="Presenter_Prof_Picture" />
@@ -226,6 +274,10 @@
                 <ScalarProperty Name="Presenter_Prof_Experience" ColumnName="Presenter_Prof_Experience" />
                 <ScalarProperty Name="Presenter_Prof_Rating" ColumnName="Presenter_Prof_Rating" />
                 <ScalarProperty Name="Presenter_Prof_Course_Outline" ColumnName="Presenter_Prof_Course_Outline" />
+                <ScalarProperty Name="DOB_Days" ColumnName="DOB_Days" />
+                <ScalarProperty Name="DOB_Months" ColumnName="DOB_Months" />
+                <ScalarProperty Name="DOB_Year" ColumnName="DOB_Year" />
+                <ScalarProperty Name="LoginAs" ColumnName="LoginAs" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -247,12 +299,31 @@
                 <ScalarProperty Name="Viewer_Name" ColumnName="Viewer_Name" />
                 <ScalarProperty Name="Viewer_City" ColumnName="Viewer_City" />
                 <ScalarProperty Name="Viewer_Email" ColumnName="Viewer_Email" />
-                <ScalarProperty Name="Viewer_D_O_Birth" ColumnName="Viewer_D_O_Birth" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
                 <ScalarProperty Name="Viewer_Ph_Num" ColumnName="Viewer_Ph_Num" />
                 <ScalarProperty Name="Viewer_Gender" ColumnName="Viewer_Gender" />
                 <ScalarProperty Name="Viewer_Login_Date_Time" ColumnName="Viewer_Login_Date_Time" />
                 <ScalarProperty Name="Viewer_Logout_Date_Time" ColumnName="Viewer_Logout_Date_Time" />
                 <ScalarProperty Name="Viewer_image" ColumnName="Viewer_image" />
+                <ScalarProperty Name="DOB_Days" ColumnName="DOB_Days" />
+                <ScalarProperty Name="DOB_Months" ColumnName="DOB_Months" />
+                <ScalarProperty Name="DOB_Year" ColumnName="DOB_Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="ConfirmPassword" ColumnName="ConfirmPassword" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

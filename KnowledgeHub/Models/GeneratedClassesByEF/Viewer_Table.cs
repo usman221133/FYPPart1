@@ -24,12 +24,16 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public string Viewer_Name { get; set; }
         public string Viewer_City { get; set; }
         public string Viewer_Email { get; set; }
-        public string Viewer_D_O_Birth { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         public string Viewer_Ph_Num { get; set; }
         public string Viewer_Gender { get; set; }
         public Nullable<System.DateTime> Viewer_Login_Date_Time { get; set; }
         public Nullable<System.DateTime> Viewer_Logout_Date_Time { get; set; }
         public byte[] Viewer_image { get; set; }
+        public string DOB_Days { get; set; }
+        public string DOB_Months { get; set; }
+        public string DOB_Year { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Login_Table> Login_Table { get; set; }
