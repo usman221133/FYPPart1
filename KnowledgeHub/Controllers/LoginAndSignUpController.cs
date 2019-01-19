@@ -26,7 +26,7 @@ namespace KnowledgeHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult LoginUser(Login_Table data)
+        public ActionResult LoginUser(LoginTableModel data)
         {
             var res = (from a in db.Users
                       where a.Email == data.UserName && a.Password == data.Login_Password
