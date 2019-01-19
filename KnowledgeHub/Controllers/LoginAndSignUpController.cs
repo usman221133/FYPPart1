@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using KnowledgeHub.Models.GeneratedClassesByEF;
 using KnowledgeHub.Models;
+using KnowledgeHub.Models.ModelClasses;
 
 namespace KnowledgeHub.Controllers
 {
@@ -79,7 +80,7 @@ namespace KnowledgeHub.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUpUser(Presenter_Table data)
+        public ActionResult SignUpUser(PresenterViewerModel data)
 
         {
             if (data.LoginAs =="Student")

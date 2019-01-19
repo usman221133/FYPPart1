@@ -11,7 +11,8 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Viewer_Table
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,18 +22,38 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         }
     
         public int Viewer_ID { get; set; }
+
+        [Required(ErrorMessage ="Name is required")]
         public string Viewer_Name { get; set; }
+
+        [Required(ErrorMessage = "City is required")]
         public string Viewer_City { get; set; }
+
+        [Required(ErrorMessage = "Email is required")]
         public string Viewer_Email { get; set; }
+
+        [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Confirm Password is required")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Phone# is required")]
         public string Viewer_Ph_Num { get; set; }
+
+        [Required(ErrorMessage = "Gender is required")]
         public string Viewer_Gender { get; set; }
         public Nullable<System.DateTime> Viewer_Login_Date_Time { get; set; }
         public Nullable<System.DateTime> Viewer_Logout_Date_Time { get; set; }
         public byte[] Viewer_image { get; set; }
+
+        [Required(ErrorMessage = "Day is required")]
         public string DOB_Days { get; set; }
+
+        [Required(ErrorMessage = "Month is required")]
         public string DOB_Months { get; set; }
+
+        [Required(ErrorMessage = "Year is required")]
         public string DOB_Year { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

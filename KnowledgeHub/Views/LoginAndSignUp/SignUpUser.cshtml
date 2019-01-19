@@ -1,4 +1,4 @@
-﻿@model KnowledgeHub.Models.GeneratedClassesByEF.Presenter_Table
+﻿@model KnowledgeHub.Models.ModelClasses.PresenterViewerModel
 
 @{
     ViewBag.Title = "Sign Up";
@@ -17,12 +17,19 @@
             <form>
 
                 @Html.EditorFor(model => model.Presenter_Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Name", @type = "text" } })
-
-                @Html.EditorFor(model => model.Presenter_Ph_Num, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contact No", @type = "text" } })
+                @Html.ValidationMessageFor(x => x.Presenter_Name, "", new { @class = "text-danger" })
+               
+                 @Html.EditorFor(model => model.Presenter_Ph_Num, new { htmlAttributes = new { @class = "form-control", @placeholder = "Contact No", @type = "text" } })
+                 @Html.ValidationMessageFor(x => x.Presenter_Ph_Num, "", new { @class = "text-danger" })
 
                 @Html.EditorFor(model => model.Presenter_Email, new { htmlAttributes = new { @class = "form-control", @placeholder = "Email Addrerss", @type = "text" } })
+                @Html.ValidationMessageFor(x => x.Presenter_Email, "", new { @class = "text-danger" })
+                
                 @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Password", @type = "Password" } })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+                
                 @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Confirm Password", @type = "Password" } })
+                @Html.ValidationMessageFor(x => x.ConfirmPassword, "", new { @class = "text-danger" })
 
                 <h4>Date of Birth</h4>
                 <div class="dateofbirth">
