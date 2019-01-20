@@ -21,23 +21,29 @@ namespace KnowledgeHub.Controllers
         [HttpGet]
         public ActionResult LoginUser()
         {
-
+            
             return View();
         }
 
         [HttpPost]
         public ActionResult LoginUser(LoginTableModel data)
         {
+            
             var res = (from a in db.Users
                       where a.Email == data.UserName && a.Password == data.Login_Password
                       select a).ToList();
             if (res.Count>0)
             {
-                if (res[0].Role =="Student")
+                
+                if (res[0].RoleID == (int?)Common.Roles.Student)
                 {
                     if (data.UserName == res[0].Email && data.Login_Password == res[0].Password)
                     {
-                        return View();
+                        if (Session["UserSession"] == null)
+                        {
+                            Session["UserSession"] = res;
+                        }
+                        return RedirectToAction("Index","Student");
 
                     }
                     else
@@ -46,10 +52,14 @@ namespace KnowledgeHub.Controllers
 
                     }
                 }
-                else if (res[0].Role =="Teacher")
+                else if (res[0].RoleID == (int?)Common.Roles.Teacher)
                 {
                     if (data.UserName == res[0].Email && data.Login_Password == res[0].Password)
                     {
+                        if (Session["UserSession"] == null)
+                        {
+                            Session["UserSession"] = res;
+                        }
                         return View();
 
                     }
@@ -69,13 +79,14 @@ namespace KnowledgeHub.Controllers
             {
                 return View();
             }
-            
         }
 
 
         public ActionResult SignUpUser()
         {
-
+            ViewBag.Months = Common.GetList("Months");
+            ViewBag.Days = Common.GetList("Days");
+            ViewBag.Years = Common.GetList("Years");
             return View();
         }
 
@@ -103,14 +114,14 @@ namespace KnowledgeHub.Controllers
 
                 User oUser = new User
                 {
-                    Name =data.Presenter_Name,
-                    PhoneNumber =data.Presenter_Ph_Num,
-                    City =data.Presenter_City,
-                    Email =data.Presenter_Email,
+                    Name = data.Presenter_Name,
+                    PhoneNumber = data.Presenter_Ph_Num,
+                    City = data.Presenter_City,
+                    Email = data.Presenter_Email,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
-                    Gender =data.Presenter_Gender,
-                    Role = "Student"
+                    Gender = data.Presenter_Gender,
+                    RoleID = (int?)Common.Roles.Student
                   
                 };
                 db.Users.Add(oUser);
@@ -144,7 +155,7 @@ namespace KnowledgeHub.Controllers
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
                     Gender = data.Presenter_Gender,
-                    Role = "Teacher"
+                    RoleID = (int?)Common.Roles.Teacher
 
                 };
                 db.Users.Add(oUser);

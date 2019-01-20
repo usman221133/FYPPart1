@@ -216,10 +216,12 @@
     <Compile Include="Controllers\HomeStartPageController.cs" />
     <Compile Include="Controllers\LoginAndSignUpController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Common.cs" />
     <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,6 +244,9 @@
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\sysdiagram.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GeneratedClassesByEF\tbl_roles.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\User.cs">
@@ -347,6 +352,8 @@
     <Content Include="Views\LoginAndSignUp\LoginUser.cshtml" />
     <Content Include="Views\LoginAndSignUp\SignUpUser.cshtml" />
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Student\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

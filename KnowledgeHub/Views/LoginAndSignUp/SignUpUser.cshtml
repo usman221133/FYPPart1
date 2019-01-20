@@ -70,7 +70,7 @@
                         </select>*@
 
                     @*days*@
-                    @Html.DropDownListFor(x => x.DOB_Days, new[]{
+                    @*@Html.DropDownListFor(x => x.DOB_Days, new[]{
                             new SelectListItem(){ Text = "1", Value = "1"},
                             new SelectListItem(){ Text = "2", Value = "2"},
                             new SelectListItem(){ Text = "3", Value = "3"},
@@ -102,11 +102,11 @@
                             new SelectListItem(){ Text = "29", Value = "29"},
                             new SelectListItem(){ Text = "30", Value = "30"},
                             new SelectListItem(){ Text = "31", Value = "31"}
-                            }, "Day", new { })
+                            }, "Day", new { })*@
 
 
                     @*Month*@
-                    @Html.DropDownListFor(x => x.DOB_Months, new[]{
+                    @*@Html.DropDownListFor(x => x.DOB_Months, new[]{
                                new SelectListItem(){ Text = "1", Value = "1"},
                             new SelectListItem(){ Text = "2", Value = "2"},
                             new SelectListItem(){ Text = "3", Value = "3"},
@@ -117,11 +117,14 @@
                             new SelectListItem(){ Text = "8", Value = "8"},
                             new SelectListItem(){ Text = "9", Value = "9"},
                             new SelectListItem(){ Text = "10", Value = "10"},
-                            }, "Month", new { })
+                            }, "Month", new { })*@
 
+                    @Html.DropDownListFor(x => x.DOB_Days, new SelectList(ViewBag.Days, "Value", "Text", "0"))
+                    @Html.DropDownListFor(x => x.DOB_Months, new SelectList(ViewBag.Months, "Value", "Text", "0"))
+                    @Html.DropDownListFor(x => x.DOB_Year, new SelectList(ViewBag.Years, "Value", "Text", "0"))
 
                     @*Year*@
-                    @Html.DropDownListFor(x => x.DOB_Year, new[]{
+                    @*@Html.DropDownListFor(x => x.DOB_Year, new[]{
                             new SelectListItem(){ Text = "1990", Value = "1990"},
                             new SelectListItem(){ Text = "1991", Value = "1991"},
                             new SelectListItem(){ Text = "1992", Value = "1992"},
@@ -153,7 +156,7 @@
                             new SelectListItem(){ Text = "2018", Value = "2018"},
                             new SelectListItem(){ Text = "2019", Value = "2019"},
 
-                            }, "Year", new { })
+                            }, "Year", new { })*@
 
                     @*<select name="month" id="monthddl">
 
