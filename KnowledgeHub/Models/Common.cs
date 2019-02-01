@@ -17,7 +17,7 @@ namespace KnowledgeHub.Models
         /// <summary>
         /// Returns the list of given Key. PreDefined keys: Months,Days,Years
         /// </summary>
-        /// <returns></returns>
+        /// <returns>List<SelectListItem></returns>
         public static List<SelectListItem> GetList(string Key)
         {
 

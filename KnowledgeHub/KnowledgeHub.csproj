@@ -217,6 +217,7 @@
     <Compile Include="Controllers\LoginAndSignUpController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -268,11 +269,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\CustomStartPage.css" />
     <Content Include="Content\SignUp.css" />
+    <Content Include="Content\StudentProfilePage.css" />
+    <Content Include="Content\TeacherProfilePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Image\1.jpg" />
+    <Content Include="Image\2.jpg" />
     <Content Include="Image\avatar.png" />
     <Content Include="Image\OriginalLogo.png" />
     <Content Include="Image\pic1.jpg" />
@@ -354,6 +358,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.bootstrap.min.js.map" />
     <Content Include="Views\Student\Index.cshtml" />
     <Content Include="Views\Student\ViewProfile.cshtml" />
+    <Content Include="Views\Student\generator.cshtml" />
+    <Content Include="Views\Teacher\Index.cshtml" />
+    <Content Include="Views\Teacher\ViewProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

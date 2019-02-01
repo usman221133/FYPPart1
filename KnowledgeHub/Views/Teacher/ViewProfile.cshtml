@@ -1,6 +1,6 @@
-﻿@model KnowledgeHub.Models.GeneratedClassesByEF.Viewer_Table
+﻿    @model KnowledgeHub.Models.GeneratedClassesByEF.Presenter_Table
 @{
-    ViewBag.Title = "Student Profile Page";
+    ViewBag.Title = "Teacher Profile Page";
     Layout = null;
 }
 
@@ -8,37 +8,37 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Student Profile Page</title>
+    <title>Teacher Profile Page</title>
     <link href="TeacherProfile.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="Box">
 
-        <h1> Student Profile</h1>
+        <h1> Teacher Profile</h1>
 
         <img src="~/Image/2.jpg">
 
         <table>
             <tr>
-                <td>Student Name:</td>
-                <td>@Model.Viewer_Name</td>
+                <td>Teacher Name:</td>
+                <td>@Model.Presenter_Name</td>
             </tr>
             <tr>
-                <td>Gender:</td>
-                <td>@Model.Viewer_Gender</td>
+                <td>Experience:</td>
+                <td>5 Years</td>
             </tr>
             <tr>
                 <td>Contact Number:</td>
-                <td>@Model.Viewer_Ph_Num</td>
+                <td>@Model.Presenter_Ph_Num</td>
             </tr>
             <tr>
-                <td>Email Address:</td>
-                <td>@Model.Viewer_Email</td>
+                <td>Teacher Courses:</td>
+                <td>Java, Database</td>
             </tr>
             <tr>
-                <td>Date Of Birth:</td>
-                <td>@Model.DOB_Days - @Model.DOB_Months - @Model.DOB_Year</td>
+                <td>Teaching Expertise:</td>
+                <td>Mobile and Web</td>
             </tr>
         </table>
 
@@ -64,7 +64,7 @@
         <h2> Description:</h2>
 
         <div class="description">
-            <p>Mr @Model.Viewer_Name is very good and talented teacher he has been teaching Java and OOP since 5 years and he is very passionate about his field</p>
+            <p>Mr @Model.Presenter_Name is very good and talented teacher he has been teaching Java and OOP since 5 years and he is very passionate about his field</p>
         </div>
 
     </div>
