@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Contact.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="logo" src="~/Image/logo1.png">
+            </div>
+
+            <div class="col-sm-8">
+                <div class="navigation">
+                    <label for="toggle">&#9776;</label>
+                    <input type="checkbox" id="toggle" />
+                    <div class="menu">
+                        <a href="/HomeStartPage/Index">Home</a>
+                        <a href="/HomeStartPage/About">About</a>
+                        <a href="/HomeStartPage/Services">Services</a>
+                        <a href="/HomeStartPage/Contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row contact">
+            <div class="col-sm-3">
+
+            </div>
+            <div class="col-sm-6">
+                <h1>contact us</h1>
+                <form>
+                    <input type="text" id="fname" placeholder="First Name">
+                    <input type="text" id="lname" placeholder="Last Name">
+                    <input type="text" id="email" placeholder="Email Address">
+                    <textarea id="msg" placeholder="Message"></textarea>
+                    <input type="submit" value="SEND">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -42,7 +42,7 @@
 
 @*New Html*@
 
-<html>
+@*<html>
 <head>
     <title>Front Page</title>
     <link href="FrontPage.css" rel="stylesheet" />
@@ -73,4 +73,51 @@
         </div>
     </header>
 </body>
+</html>*@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="css/bootstrap.css" rel="stylesheet">    
+    <link href="~/Content/CustomStartPage.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <img class="logo" src="~/Image/logo1.png">
+            </div>
+
+            <div class="col-sm-8">
+                <div class="navigation">
+                    <label for="toggle">&#9776;</label>
+                    <input type="checkbox" id="toggle" />
+                    <div class="menu">
+                        <a href="/HomeStartPage/Index">Home</a>
+                        <a href="/HomeStartPage/About">About</a>
+                        <a href="/HomeStartPage/Services">Services</a>
+                        <a href="/HomeStartPage/Contact">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="title">Knowledge Hub</h1>
+                <h1 class="slogan">Where your Career Begins</h1>
+                <div class="button">
+                    <a href="/LoginAndSignUp/LoginUser" target="_blank" class="btn">Log In</a>
+                    <a href="/LoginAndSignUp/SignUpUser" target="_blank" class="btn">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>

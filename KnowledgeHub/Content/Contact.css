@@ -1,4 +1,4 @@
-body
+﻿body
 {
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Image/bg4.jpg);
     background-size: cover;
@@ -49,48 +49,75 @@ label {
     display: none;
 }
 
-.title
+.contact h1
 {
     color: white;
-    font-size: 72px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     text-align: center;
-    margin-top: 12%;
     font-weight: bold;
-    margin-bottom: 0;
+    margin-top: 80px;
 }
 
-.slogan
+input[type=text], textarea
+{
+    margin-top: 15px;
+    border-radius: 8px;
+    background: transparent;
+    border-color: white;
+    border-width: 2px;
+    color: white;
+    padding-left: 5px;
+}
+
+::placeholder
 {
     color: white;
-    font-size: 50px;
-    font-weight: 400;
-    text-align: center;
 }
 
-.button
+#fname
 {
-    text-align: center;
+    width: 48%;
+    height: 40px;
 }
 
-.btn
+#lname
 {
-    padding: 8px 30px;
-    margin: 2px;
-    color: white;
-    text-decoration: none;
+    width: 48%;
+    float: right;
+    height: 40px;
+}
+
+#email
+{
+    width: 100%;
+    height: 40px;
+}
+
+#msg
+{
+    height: 120px;
+    width: 100%;
+}
+
+input[type=submit] 
+{
+    border: none;
     border-radius: 50px;
-    background-color: #fb2525;
+    cursor: pointer;
+    color: black;
+    background-color: #ffc107;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px 40px;
+    font-weight: bold;
     margin-top: 10px;
 }
-
-.btn:hover
-{
-    background-color: #ffc107;
-    color: black;
-    font-weight: 700;
-    font-size: 17px;
-}
+  
+  input[type=submit]:hover 
+  {
+    background-color: #fb2525;
+    color: white;
+  }
 
 @media only screen and (max-width: 500px)
 {
@@ -137,34 +164,9 @@ label {
         margin-top: 10px;
     }
 
-    .title
-    {
-        color: white;
-        font-size: 45px;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        text-align: center;
-        margin-top: 5%;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-
-    .slogan
-    {
-        color: white;
-        font-size: 35px;
-        font-weight: 100;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
-    .btn
-    {
-        margin-bottom: 30px;
-    }
-
     body
     {
-        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Image/bg2.jpg);
+        background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(../Image/bg4.jpg);
         background-size: cover;
         background-position: center;
         height: 110vh;

@@ -5,6 +5,10 @@
 }
 
 <link href="~/Content/StudentProfilePage.css" rel="stylesheet" />
+<link href="~/Content/all.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/studentDashboard.css" rel="stylesheet" />
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,63 +16,78 @@
     <link href="TeacherProfile.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="Box">
-
-        <h1> Student Profile</h1>
-
-        <img src="~/Image/2.jpg">
-
-        <table>
-            <tr>
-                <td>Student Name:</td>
-                <td>@Model.Viewer_Name</td>
-            </tr>
-            <tr>
-                <td>Gender:</td>
-                <td>@Model.Viewer_Gender</td>
-            </tr>
-            <tr>
-                <td>Contact Number:</td>
-                <td>@Model.Viewer_Ph_Num</td>
-            </tr>
-            <tr>
-                <td>Email Address:</td>
-                <td>@Model.Viewer_Email</td>
-            </tr>
-            <tr>
-                <td>Date Of Birth:</td>
-                <td>@Model.DOB_Days - @Model.DOB_Months - @Model.DOB_Year</td>
-            </tr>
-        </table>
-
-        <div class="EditProfile">
-            <a href="#">Edit Profile</a>
+     <div class="row">
+        <div class="col-sm-3">
+            <div class="menu">
+                <img class="logo" src="~/Image/logo1.png">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.Viewer_ID })</li>
+                    <li><a href="#">REGISTRATION</a></li>
+                    <li><a href="#">TIME TABLE</a></li>
+                    <li><a href="#">CLASS ROOM</a></li>
+                    <li><a href="#">LATEST NEWS</a></li>
+                </ul>
+            </div>
         </div>
+        <div class="col-sm-9">
+            <div class="Box">
 
-        <div class="rate">
-            <input type="radio" id="star5" name="rate" value="5" />
-            <label for="star5" title="Awesome">5 stars</label>
-            <input type="radio" id="Good" name="rate" value="4" />
-            <label for="star4" title="Good">4 stars</label>
-            <input type="radio" id="star3" name="rate" value="3" />
-            <label for="star3" title="Average">3 stars</label>
-            <input type="radio" id="star2" name="rate" value="2" />
-            <label for="star2" title="Bad">2 stars</label>
-            <input type="radio" id="star1" name="rate" value="1" />
-            <label for="star1" title="Very Bad">1 star</label>
+                <h1> Student Profile</h1>
+
+                <img src="~/Image/2.jpg">
+
+                <table>
+                    <tr>
+                        <td>Student Name:</td>
+                        <td>@Model.Viewer_Name</td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td>@Model.Viewer_Gender</td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number:</td>
+                        <td>@Model.Viewer_Ph_Num</td>
+                    </tr>
+                    <tr>
+                        <td>Email Address:</td>
+                        <td>@Model.Viewer_Email</td>
+                    </tr>
+                    <tr>
+                        <td>Date Of Birth:</td>
+                        <td>@Model.DOB_Days - @Model.DOB_Months - @Model.DOB_Year</td>
+                    </tr>
+                </table>
+
+                <div class="EditProfile">
+                    <a href="#">Edit Profile</a>
+                </div>
+
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="Awesome">5 stars</label>
+                    <input type="radio" id="Good" name="rate" value="4" />
+                    <label for="star4" title="Good">4 stars</label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="Average">3 stars</label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="Bad">2 stars</label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="Very Bad">1 star</label>
+                </div>
+
+
+
+                <h2> Description:</h2>
+
+                <div class="description">
+                    <p>Mr @Model.Viewer_Name is very good and talented teacher he has been teaching Java and OOP since 5 years and he is very passionate about his field</p>
+                </div>
+
+            </div>
         </div>
-
-
-
-        <h2> Description:</h2>
-
-        <div class="description">
-            <p>Mr @Model.Viewer_Name is very good and talented teacher he has been teaching Java and OOP since 5 years and he is very passionate about his field</p>
-        </div>
-
     </div>
-
 
 </body>
 </html>

@@ -13,6 +13,9 @@
         <EntityTypeShape EntityType="KnwoledgeHubModel.Viewer_Table" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Login_Table" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Presenter_Table" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.Cours" Width="1.5" PointX="5.375" PointY="7.75" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.StudentRegisteredCours" Width="1.5" PointX="3" PointY="8.375" />
+        <AssociationConnector Association="KnwoledgeHubModel.FK__StudentRe__viewe__31EC6D26" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

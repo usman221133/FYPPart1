@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="css/bootstrap.css" rel="stylesheet">
+<link href="~/Content/all.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+   
+        @*<div class="col-sm-3">
+            <div class="menu">
+                <img class="logo" src="Images/logo1.png">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">VIEW PROFILE</a></li>
+                    <li><a href="#">REGISTRATION</a></li>
+                    <li><a href="#">TIME TABLE</a></li>
+                    <li><a href="#">CLASS ROOM</a></li>
+                    <li><a href="#">LATEST NEWS</a></li>
+                </ul>
+            </div>
+        </div>*@
+
+
+        @*<div class="col-sm-9">
+            @RenderBody()
+        </div>*@
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

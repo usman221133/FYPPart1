@@ -13,5 +13,18 @@ namespace KnowledgeHub.Controllers
         {
             return View();
         }
+        public ActionResult Services()
+        {
+            return View();
+        }
+
+        public ActionResult About()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
     }
 }

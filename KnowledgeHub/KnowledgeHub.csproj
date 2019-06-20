@@ -223,6 +223,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\GeneratedClassesByEF\Cours.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -242,6 +245,9 @@
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Presenter_Table.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GeneratedClassesByEF\StudentRegisteredCours.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\sysdiagram.cs">
@@ -265,10 +271,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\About.css" />
+    <Content Include="Content\all.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Contact.css" />
     <Content Include="Content\CustomStartPage.css" />
+    <Content Include="Content\Services.css" />
     <Content Include="Content\SignUp.css" />
+    <Content Include="Content\studentDashboard.css" />
     <Content Include="Content\StudentProfilePage.css" />
     <Content Include="Content\TeacherProfilePage.css" />
     <Content Include="favicon.ico" />
@@ -278,6 +289,19 @@
     <Content Include="Image\1.jpg" />
     <Content Include="Image\2.jpg" />
     <Content Include="Image\avatar.png" />
+    <Content Include="Image\avatar1.png" />
+    <Content Include="Image\avatar2.jpg" />
+    <Content Include="Image\avatar3.png" />
+    <Content Include="Image\bg1.jpg" />
+    <Content Include="Image\bg2.jpg" />
+    <Content Include="Image\bg3.jpg" />
+    <Content Include="Image\bg4.jpg" />
+    <Content Include="Image\bg5.jpg" />
+    <Content Include="Image\bg6.jpg" />
+    <Content Include="Image\bg7.jpg" />
+    <Content Include="Image\bg8.jpg" />
+    <Content Include="Image\logo1.png" />
+    <Content Include="Image\Logo2.png" />
     <Content Include="Image\OriginalLogo.png" />
     <Content Include="Image\pic1.jpg" />
     <Content Include="Models\GeneratedClassesByEF\EFModelClasses.Context.tt">
@@ -297,6 +321,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="webfonts\fa-brands-400.svg" />
+    <Content Include="webfonts\fa-light-300.svg" />
+    <Content Include="webfonts\fa-regular-400.svg" />
+    <Content Include="webfonts\fa-solid-900.svg" />
     <EntityDeploy Include="Models\GeneratedClassesByEF\EFModelClasses.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EFModelClasses.Designer.cs</LastGenOutput>
@@ -361,6 +389,27 @@
     <Content Include="Views\Student\generator.cshtml" />
     <Content Include="Views\Teacher\Index.cshtml" />
     <Content Include="Views\Teacher\ViewProfile.cshtml" />
+    <Content Include="Views\HomeStartPage\Services.cshtml" />
+    <Content Include="webfonts\fa-brands-400.eot" />
+    <Content Include="webfonts\fa-brands-400.ttf" />
+    <Content Include="webfonts\fa-brands-400.woff" />
+    <Content Include="webfonts\fa-brands-400.woff2" />
+    <Content Include="webfonts\fa-light-300.eot" />
+    <Content Include="webfonts\fa-light-300.ttf" />
+    <Content Include="webfonts\fa-light-300.woff" />
+    <Content Include="webfonts\fa-light-300.woff2" />
+    <Content Include="webfonts\fa-regular-400.eot" />
+    <Content Include="webfonts\fa-regular-400.ttf" />
+    <Content Include="webfonts\fa-regular-400.woff" />
+    <Content Include="webfonts\fa-regular-400.woff2" />
+    <Content Include="webfonts\fa-solid-900.eot" />
+    <Content Include="webfonts\fa-solid-900.ttf" />
+    <Content Include="webfonts\fa-solid-900.woff" />
+    <Content Include="webfonts\fa-solid-900.woff2" />
+    <Content Include="Views\HomeStartPage\About.cshtml" />
+    <Content Include="Views\HomeStartPage\Contact.cshtml" />
+    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
+    <Content Include="Views\Student\LadingPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,7 +4,15 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="coursename" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="coursecode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Login_Table">
           <Key>
             <PropertyRef Name="Login_ID" />
@@ -36,6 +44,15 @@
           <Property Name="DOB_Months" Type="nvarchar" MaxLength="50" />
           <Property Name="DOB_Year" Type="nvarchar" MaxLength="50" />
           <Property Name="LoginAs" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StudentRegisteredCourses">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="viewer_courseid" Type="int" Nullable="false" />
+          <Property Name="viewer_coursename" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="viewer_id" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -87,6 +104,18 @@
           <Property Name="DOB_Months" Type="nvarchar" MaxLength="50" />
           <Property Name="DOB_Year" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__StudentRe__viewe__31EC6D26">
+          <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="0..1" />
+          <End Role="StudentRegisteredCourses" Type="Self.StudentRegisteredCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viewer_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Principal>
+            <Dependent Role="StudentRegisteredCourses">
+              <PropertyRef Name="viewer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Login_Table_Login_Table">
           <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
           <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
@@ -112,12 +141,18 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="KnwoledgeHubModelStoreContainer">
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login_Table" EntityType="Self.Login_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentRegisteredCourses" EntityType="Self.StudentRegisteredCourses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_roles" EntityType="Self.tbl_roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__StudentRe__viewe__31EC6D26" Association="Self.FK__StudentRe__viewe__31EC6D26">
+            <End Role="Viewer_Table" EntitySet="Viewer_Table" />
+            <End Role="StudentRegisteredCourses" EntitySet="StudentRegisteredCourses" />
+          </AssociationSet>
           <AssociationSet Name="FK_Login_Table_Login_Table" Association="Self.FK_Login_Table_Login_Table">
             <End Role="Viewer_Table" EntitySet="Viewer_Table" />
             <End Role="Login_Table" EntitySet="Login_Table" />
@@ -127,8 +162,7 @@
             <End Role="Login_Table" EntitySet="Login_Table" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KnwoledgeHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -217,6 +251,7 @@
           <Property Name="DOB_Months" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DOB_Year" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Viewer_Table" ToRole="Login_Table" />
+          <NavigationProperty Name="StudentRegisteredCourses" Relationship="KnwoledgeHubModel.FK__StudentRe__viewe__31EC6D26" FromRole="Viewer_Table" ToRole="StudentRegisteredCours" />
         </EntityType>
         <Association Name="FK_Login_Table_Login_Table">
           <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
@@ -257,7 +292,43 @@
             <End Role="Presenter_Table" EntitySet="Presenter_Table" />
             <End Role="Login_Table" EntitySet="Login_Table" />
           </AssociationSet>
+          <EntitySet Name="Courses" EntityType="KnwoledgeHubModel.Cours" />
+          <EntitySet Name="StudentRegisteredCourses" EntityType="KnwoledgeHubModel.StudentRegisteredCours" />
+          <AssociationSet Name="FK__StudentRe__viewe__31EC6D26" Association="KnwoledgeHubModel.FK__StudentRe__viewe__31EC6D26">
+            <End Role="Viewer_Table" EntitySet="Viewer_Table" />
+            <End Role="StudentRegisteredCours" EntitySet="StudentRegisteredCourses" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cours">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="coursename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="coursecode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentRegisteredCours">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="viewer_courseid" Type="Int32" Nullable="false" />
+          <Property Name="viewer_coursename" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="viewer_id" Type="Int32" />
+          <NavigationProperty Name="Viewer_Table" Relationship="KnwoledgeHubModel.FK__StudentRe__viewe__31EC6D26" FromRole="StudentRegisteredCours" ToRole="Viewer_Table" />
+        </EntityType>
+        <Association Name="FK__StudentRe__viewe__31EC6D26">
+          <End Type="KnwoledgeHubModel.Viewer_Table" Role="Viewer_Table" Multiplicity="0..1" />
+          <End Type="KnwoledgeHubModel.StudentRegisteredCours" Role="StudentRegisteredCours" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Viewer_Table">
+              <PropertyRef Name="Viewer_ID" />
+            </Principal>
+            <Dependent Role="StudentRegisteredCours">
+              <PropertyRef Name="viewer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -349,6 +420,25 @@
                 <ScalarProperty Name="DOB_Days" ColumnName="DOB_Days" />
                 <ScalarProperty Name="DOB_Months" ColumnName="DOB_Months" />
                 <ScalarProperty Name="DOB_Year" ColumnName="DOB_Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Cours">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="coursecode" ColumnName="coursecode" />
+                <ScalarProperty Name="coursename" ColumnName="coursename" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentRegisteredCourses">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.StudentRegisteredCours">
+              <MappingFragment StoreEntitySet="StudentRegisteredCourses">
+                <ScalarProperty Name="viewer_id" ColumnName="viewer_id" />
+                <ScalarProperty Name="viewer_coursename" ColumnName="viewer_coursename" />
+                <ScalarProperty Name="viewer_courseid" ColumnName="viewer_courseid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
