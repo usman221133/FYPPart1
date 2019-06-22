@@ -29,5 +29,7 @@ namespace KnowledgeHub.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours> StudentRegisteredCours { get; set; }
     }
 }

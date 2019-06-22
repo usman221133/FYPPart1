@@ -1,0 +1,85 @@
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <title>Student Class Room</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/studentClassroom.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="Images/logo1.png">
+                    <ul>
+                        <li><a href="studentDashboard.html">HOME</a></li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.FirstOrDefault().viewer_id })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.FirstOrDefault().viewer_id })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.FirstOrDefault().viewer_id })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.FirstOrDefault().viewer_id })</li>
+                        <li><a href="studentLatestNews.html">LATEST NEWS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>Class Room</h3>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6">
+                            <div class="class1">
+                                <a href="#">
+                                    <div class="class11">
+                                        @*<h4>Computer Programing</h4>
+                                        <h6>Monday</h6>
+                                        <h6>10am - 12am</h6>
+                                        <p>Ahmed Raza</p>*@
+                                        <h4>@item.viewer_coursename</h4>
+                                        <h6>@item.teacher_name</h6>
+                                        <h6>@item.timing</h6>
+                                        <p>@item.days</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                   
+                    @*<div class="col-sm-6">
+                        <div class="class2">
+                            <a href="#">
+                                <div class="class22">
+                                    <h4>Marketing</h4>
+                                    <h6>Tuesday</h6>
+                                    <h6>12pm - 2pm</h6>
+                                    <p>Ahmed Raza</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="class3">
+                            <a href="#">
+                                <div class="class33">
+                                    <h4>Psychology</h4>
+                                    <h6>Wednessday</h6>
+                                    <h6>2pm - 4pm</h6>
+                                    <p>Farhan Bukhari</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

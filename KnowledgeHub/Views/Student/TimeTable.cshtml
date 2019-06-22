@@ -1,0 +1,62 @@
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Student TimeTable</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/studentTimeTable.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="Images/logo1.png">
+                    <ul>
+                        <li><a href="studentDashboard.html">HOME</a></li>
+                        <li><a href="studentProfile.html" target="_blank">VIEW PROFILE</a></li>
+                        <li><a href="studentRegistration.html">REGISTRATION</a></li>
+                        <li><a href="#">TIME TABLE</a></li>
+                        <li><a href="studentClassroom.html">CLASS ROOM</a></li>
+                        <li><a href="studentLatestNews.html">LATEST NEWS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>TIME TABLE</h3>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Courses Names</th>
+                            <th>Teachers Names</th>
+                            <th>Timings</th>
+                            <th>Days</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.viewer_coursename</td>
+                                <td>@item.teacher_name</td>
+                                <td>@item.timing</td>
+                                <td>@item.days</td>
+                            </tr>
+                        }
+                       
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>

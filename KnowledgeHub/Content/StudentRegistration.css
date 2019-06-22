@@ -1,0 +1,78 @@
+﻿body
+{
+    background-image: url(../Images/bg10.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.menu
+{
+    background-color: #434549;
+    height: 100vh;
+}
+
+.menu .logo
+{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.menu ul
+{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.menu ul li
+{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.menu ul li:hover
+{
+    background-color: #63C0E7;
+}
+
+.menu ul li a
+{
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.menu ul li a:hover
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+h3
+{
+    text-align: center;
+    font-family: calibri;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+table
+{
+    margin-top: 50px;
+}
+input[type="checkbox"]
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="submit"]
+{
+    
+}

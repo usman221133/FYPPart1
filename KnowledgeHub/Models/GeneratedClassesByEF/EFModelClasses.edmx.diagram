@@ -4,18 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="652a1f92bc71406c95aed0206edca8c9" Name="Diagram1">
+      <Diagram DiagramId="c28e00d68b584218b2d459ba55343345" Name="Diagram1">
+        <EntityTypeShape EntityType="KnwoledgeHubModel.Cours" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Login_Table" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Presenter_Table" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.tbl_roles" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.User" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.StudentRegisteredCours" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.sysdiagram" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.tbl_roles" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.TeacherRegisteredCours" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.User" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Viewer_Table" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Login_Table" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Presenter_Table" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.Cours" Width="1.5" PointX="5.375" PointY="7.75" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.StudentRegisteredCours" Width="1.5" PointX="3" PointY="8.375" />
-        <AssociationConnector Association="KnwoledgeHubModel.FK__StudentRe__viewe__31EC6D26" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

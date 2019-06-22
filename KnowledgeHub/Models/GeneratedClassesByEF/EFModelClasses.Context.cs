@@ -25,13 +25,14 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<Login_Table> Login_Table { get; set; }
         public virtual DbSet<Presenter_Table> Presenter_Table { get; set; }
+        public virtual DbSet<StudentRegisteredCours> StudentRegisteredCourses { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tbl_roles> tbl_roles { get; set; }
+        public virtual DbSet<TeacherRegisteredCours> TeacherRegisteredCourses { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Viewer_Table> Viewer_Table { get; set; }
-        public virtual DbSet<Cours> Courses { get; set; }
-        public virtual DbSet<StudentRegisteredCours> StudentRegisteredCourses { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public Viewer_Table()
         {
             this.Login_Table = new HashSet<Login_Table>();
-            this.StudentRegisteredCourses = new HashSet<StudentRegisteredCours>();
         }
     
         public int Viewer_ID { get; set; }
@@ -38,7 +37,5 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Login_Table> Login_Table { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentRegisteredCours> StudentRegisteredCourses { get; set; }
     }
 }

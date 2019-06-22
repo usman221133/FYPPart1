@@ -12,15 +12,13 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
     using System;
     using System.Collections.Generic;
     
-    public partial class StudentRegisteredCours
+    public partial class TeacherRegisteredCours
     {
-        public int Id { get; set; }
-        public int viewer_courseid { get; set; }
-        public string viewer_coursename { get; set; }
-        public int viewer_id { get; set; }
-        public int teacher_id { get; set; }
-        public string teacher_name { get; set; }
-        public string timing { get; set; }
-        public string days { get; set; }
+        public int id { get; set; }
+        public string CourseName { get; set; }
+        public string TeacherName { get; set; }
+        public string TeacherId { get; set; }
+        public string Timing { get; set; }
+        public string Days { get; set; }
     }
 }

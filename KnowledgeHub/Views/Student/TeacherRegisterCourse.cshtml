@@ -1,0 +1,172 @@
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Student Registration</title>
+    
+    <link href="~/Content/StudentRegistration.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="Images/logo1.png">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.Viewer_id })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "RegisterCourse", new { id = ViewBag.Viewer_id })</li>
+                        <li><a href="#">TIME TABLE</a></li>
+                        <li><a href="#">CLASS ROOM</a></li>
+                        <li><a href="#">LATEST NEWS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>REGISTRATION</h3>
+                <table class="table table-dark table-striped" id="dataTableId">
+                    <thead>
+                        <tr>
+                            <th>Courses Names</th>
+                            <th>Teachers Names</th>
+                            <th>Timings</th>
+                            <th>Days</th>
+                            <th style="display:none">TeacherId</th>
+                            <th style="display:none">id</th>
+                            <th>Select Courses</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.CourseName</td>  
+                                <td>@item.TeacherName</td> 
+                                <td>@item.Timing</td> 
+                                <td>@item.Days</td>    
+                                <td style="display:none">@item.TeacherId</td> 
+                                <td style="display:none">@item.id</td>                             
+                                <td><input type="checkbox" name="cbSelectedCourse"></td>
+                            </tr>
+                        }
+
+                        @*<tr>
+                            <td>Computer Programing</td>
+                            <td>Ahmed Raza</td>
+                            <td>10am - 12pm</td>
+                            <td>Monday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Marketing</td>
+                            <td>Farhan Bukhari</td>
+                            <td>8am - 10am</td>
+                            <td>Tuesday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Operating System</td>
+                            <td>Kashif Khan</td>
+                            <td>12pm - 2pm</td>
+                            <td>Wednessday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Psychology</td>
+                            <td>Mutahar Ali Khan</td>
+                            <td>12pm - 2pm</td>
+                            <td>Thursday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Calculus</td>
+                            <td>Dr Asmat Ara</td>
+                            <td>2pm - 4pm</td>
+                            <td>Friday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Electronics</td>
+                            <td>Dr Haji Khan</td>
+                            <td>2pm - 4pm</td>
+                            <td>Saturday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        <tr>
+                            <td>Multivariate Calculus</td>
+                            <td>Amir Sheikh</td>
+                            <td>10am - 12pm</td>
+                            <td>Sunday</td>
+                            <td><input type="checkbox"></td>
+                        </tr>*@
+                    </tbody>
+                </table>
+                <input type="button" value="Submit" onclick="btnSubmit()">
+            </div>
+        </div>
+    </div>
+  
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+    function GetCheckedDetails() {
+        debugger
+        var res = [];
+        var obj = {};
+        var tr = $("#dataTableId input[name='cbSelectedCourse']:checked");
+        for (var i = 0; i < tr.length; i++) {
+            var td = tr.eq(i).parents('tr').children('td');
+            res.push({
+
+                'CourseName': td.eq(0).html().trim(),
+                'TeacherName': td.eq(1).html().trim(),
+                'Timing': td.eq(2).html().trim(),
+                'Days': td.eq(3).html().trim(),
+                'TeacherId': td.eq(4).html().trim(),
+               'id' : td.eq(5).html().trim()
+            });
+
+        }
+        return res;
+    }
+
+    function btnSubmit() {
+        debugger;
+        var data = GetCheckedDetails();
+
+        var html = '';
+        $.ajax({
+            url: "/Student/InsertStudentRegisteredCourses",
+            data: JSON.stringify(data),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result == "SelectOne") {
+                    alert("Please Select At least one Course");
+                }
+                else if(result=="Success"){
+                    alert("Course Registered Successfully");
+                }
+                
+            },
+            error: function () {
+                alert("Oops, something wrong happened");
+            }
+        });
+
+    }
+
+</script>

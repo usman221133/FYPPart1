@@ -256,6 +256,9 @@
     <Compile Include="Models\GeneratedClassesByEF\tbl_roles.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GeneratedClassesByEF\TeacherRegisteredCours.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\User.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
@@ -279,8 +282,11 @@
     <Content Include="Content\CustomStartPage.css" />
     <Content Include="Content\Services.css" />
     <Content Include="Content\SignUp.css" />
+    <Content Include="Content\studentClassroom.css" />
     <Content Include="Content\studentDashboard.css" />
     <Content Include="Content\StudentProfilePage.css" />
+    <Content Include="Content\StudentRegistration.css" />
+    <Content Include="Content\studentTimeTable.css" />
     <Content Include="Content\TeacherProfilePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -410,6 +416,9 @@
     <Content Include="Views\HomeStartPage\Contact.cshtml" />
     <Content Include="Views\Shared\_LayoutStudent.cshtml" />
     <Content Include="Views\Student\LadingPage.cshtml" />
+    <Content Include="Views\Student\TeacherRegisterCourse.cshtml" />
+    <Content Include="Views\Student\TimeTable.cshtml" />
+    <Content Include="Views\Student\Classroom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

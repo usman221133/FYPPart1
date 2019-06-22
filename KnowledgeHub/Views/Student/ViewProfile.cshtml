@@ -21,11 +21,11 @@
             <div class="menu">
                 <img class="logo" src="~/Image/logo1.png">
                 <ul>
-                    <li><a href="#">HOME</a></li>
+                    <li>@Html.ActionLink("HOME", "LadingPage", new { id = Model.Viewer_ID })</li>
                     <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.Viewer_ID })</li>
-                    <li><a href="#">REGISTRATION</a></li>
-                    <li><a href="#">TIME TABLE</a></li>
-                    <li><a href="#">CLASS ROOM</a></li>
+                    <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.Viewer_ID })</li>
+                    <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.Viewer_ID })</li>
+                    <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.Viewer_ID })</li>
                     <li><a href="#">LATEST NEWS</a></li>
                 </ul>
             </div>
