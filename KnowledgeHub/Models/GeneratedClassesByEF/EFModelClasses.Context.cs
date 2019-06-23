@@ -25,7 +25,6 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cours> Courses { get; set; }
         public virtual DbSet<Login_Table> Login_Table { get; set; }
         public virtual DbSet<Presenter_Table> Presenter_Table { get; set; }
         public virtual DbSet<StudentRegisteredCours> StudentRegisteredCourses { get; set; }

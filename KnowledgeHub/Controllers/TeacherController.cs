@@ -14,9 +14,10 @@ namespace KnowledgeHub.Controllers
         public ActionResult Index()
         {
             var User = ((List<User>)Session["UserSession"])[0];
-            var res = db.Presenter_Table.Where(x => x.Presenter_Email == User.Email).ToList();
+            //var res = db.Presenter_Table.Where(x => x.Presenter_Email == User.Email).ToList();
 
-            return View(res);
+            //return View(res);
+            return RedirectToAction("LandingPage",new {id= User.UserID });
         }
 
         [HttpGet]
@@ -26,5 +27,22 @@ namespace KnowledgeHub.Controllers
             var student = db.Presenter_Table.Where(x => x.Presenter_ID == id).FirstOrDefault();
             return View(student);
         }
+
+        public ActionResult LandingPage(int id)
+        {
+            //var teacher = db.Presenter_Table.Where(x => x.Presenter_ID == id).FirstOrDefault();
+
+            //for registered courses
+            //var qry = db.TeacherRegisteredCourses.Where(x => x.TeacherId == teacher.Presenter_ID).ToList();
+            //ViewBag.RegCourses = qry;
+
+            return View();
+        }
+        public ActionResult Classroom()
+        {
+            //var qry = db.TeacherRegisteredCourses.Where(s => s.TeacherId == id).ToList();
+            return View();
+        }
+
     }
 }

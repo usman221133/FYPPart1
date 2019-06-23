@@ -1,0 +1,54 @@
+﻿@model KnowledgeHub.Models.GeneratedClassesByEF.Presenter_Table
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Teacher Dashboard</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+   
+    <link href="~/Content/teacherDashboard.css" rel="stylesheet" />
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="Images/logo1.png">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li><a href="teacherProfile.html" target="_blank">VIEW PROFILE</a></li>
+                        <li><a href="teacherRegistration.html">REGISTRATION</a></li>
+                        <li><a href="teacherTimeTable.html">TIME TABLE</a></li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id="" })</li>
+                        <li><a href="teacherLatestNews.html">LATEST NEWS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>Welcome Usman@*@Model.Presenter_Name*@</h3>
+                <div class="details">
+                    <img class="picture1" src="Images/avatar3.png">
+                    <a href="#">Logout</a>
+                </div>
+                <div class="details2">
+                    <h4>My Courses:</h4>
+                    <h6>Object Oriented Programing</h6>
+                    <h6>Database Management System</h6>
+                    <h6>Web Development</h6>
+                </div>
+                <div class="details4">
+                    <h4>Announcement!</h4>
+                    <h6>There is no Announcement yet</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

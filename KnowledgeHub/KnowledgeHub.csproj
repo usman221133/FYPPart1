@@ -223,9 +223,6 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common.cs" />
-    <Compile Include="Models\GeneratedClassesByEF\Cours.cs">
-      <DependentUpon>EFModelClasses.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,6 +284,8 @@
     <Content Include="Content\StudentProfilePage.css" />
     <Content Include="Content\StudentRegistration.css" />
     <Content Include="Content\studentTimeTable.css" />
+    <Content Include="Content\teacherClassroom.css" />
+    <Content Include="Content\teacherDashboard.css" />
     <Content Include="Content\TeacherProfilePage.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -419,6 +418,8 @@
     <Content Include="Views\Student\TeacherRegisterCourse.cshtml" />
     <Content Include="Views\Student\TimeTable.cshtml" />
     <Content Include="Views\Student\Classroom.cshtml" />
+    <Content Include="Views\Teacher\LandingPage.cshtml" />
+    <Content Include="Views\Teacher\Classroom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,7 +17,7 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public int id { get; set; }
         public string CourseName { get; set; }
         public string TeacherName { get; set; }
-        public string TeacherId { get; set; }
+        public int TeacherId { get; set; }
         public string Timing { get; set; }
         public string Days { get; set; }
     }

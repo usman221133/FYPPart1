@@ -1,0 +1,133 @@
+﻿body
+{
+    background-image: url(../Images/bg10.jpg);
+    background-size: cover;
+    background-position: center;
+}
+.menu
+{
+    background-color: #434549;
+    height: 100vh;
+}
+
+.menu .logo
+{
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+.menu ul
+{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.menu ul li
+{
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.menu ul li:hover
+{
+    background-color: #63C0E7;
+}
+
+.menu ul li a
+{
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.menu ul li a:hover
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bolder;
+}
+
+h3
+{
+    text-align: center;
+    font-family: calibri;
+    margin-top: 10px;
+    font-weight: bold;
+    margin-bottom: 80px;
+}
+
+.class1
+{
+    background-image: url(../Images/bg11.jpg);
+    width: 300px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+}
+
+.class1:hover
+{
+    background-image: url(../Images/bg12.jpg);
+}
+
+.class1 a
+{
+    color: black;
+}
+
+.class1 a:hover
+{
+    text-decoration: none;
+}
+
+.class2
+{
+    background-image: url(../Images/bg11.jpg);
+    width: 300px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+}
+
+.class2:hover
+{
+    background-image: url(../Images/bg12.jpg);
+}
+
+.class2 a
+{
+    color: black;
+}
+
+.class2 a:hover
+{
+    text-decoration: none;
+}
+
+.class3
+{
+    background-image: url(../Images/bg11.jpg);
+    width: 300px;
+    margin-top: 40px;
+    padding: 10px 10px 10px 20px;
+    border-radius: 10px;
+}
+
+.class3:hover
+{
+    background-image: url(../Images/bg12.jpg);
+}
+
+.class3 a
+{
+    color: black;
+}
+
+.class3 a:hover
+{
+    text-decoration: none;
+}
