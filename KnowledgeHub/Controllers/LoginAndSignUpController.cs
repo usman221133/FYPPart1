@@ -69,6 +69,23 @@ namespace KnowledgeHub.Controllers
 
                     }
                 }
+                else if (res[0].RoleID == (int?)Common.Roles.Administrator)
+                {
+                    if (data.UserName == res[0].Email && data.Login_Password == res[0].Password)
+                    {
+                        //if (Session["UserSession"] == null)
+                        //{
+                        Session["UserSession"] = res;
+                        // }
+                        return RedirectToAction("Index", "Administrator");
+
+                    }
+                    else
+                    {
+                        return View();
+
+                    }
+                }
                 else
                 {
                     return View();

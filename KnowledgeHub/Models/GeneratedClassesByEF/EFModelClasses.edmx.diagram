@@ -18,6 +18,9 @@
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Presenter_Table" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK__Presenter__UserI__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK__Viewer_Ta__UserI__403A8C7D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.Administrator" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.URL" Width="1.5" PointX="12" PointY="1" />
+        <AssociationConnector Association="KnwoledgeHubModel.FK__URLs__Course_id__440B1D61" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

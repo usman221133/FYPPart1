@@ -1,0 +1,60 @@
+﻿
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/adminDashboard.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="~/Image/logo1.png">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id=""})</li>
+                        <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>
+                        <li><a href="adminPublishNews.html">PUBLISH NEWS</a></li>
+                        <li><a href="adminMakeAnnouncement.html">MAKE ANNOUNCEMENT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>Welcome Usman</h3>
+                <div class="details">
+                    <img class="picture1" src="~/Image/avatar3.png">
+                    <a href="#">Logout</a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="details2">
+                            <h4>Total Offered Courses:</h4>
+                            <h6>Object Oriented Programing</h6>
+                            <h6>Database Management System</h6>
+                            <h6>Introduction to Computing</h6>
+                            <h6>Marketing</h6>
+                            <h6>Psychology</h6>
+                            <h6>Computer Programming</h6>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="details3">
+                            <h4>Total Registered Courses:</h4>
+                            <h6>Computer Programing</h6>
+                            <h6>Psychology</h6>
+                            <h6>Marketing</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

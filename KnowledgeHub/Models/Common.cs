@@ -11,7 +11,8 @@ namespace KnowledgeHub.Models
 
         public enum Roles {
             Teacher = 2,
-            Student = 1
+            Student = 1,
+            Administrator =3
         }
 
         /// <summary>

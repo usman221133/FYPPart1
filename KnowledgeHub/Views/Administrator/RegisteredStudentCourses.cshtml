@@ -1,0 +1,58 @@
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Registered Students</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/adminRegisteredStudents.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="~/Image/logo1.png">
+                    <ul>
+                        <li><a href="adminDashboard.html">HOME</a></li>
+                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>
+                        <li><a href="adminPublishNews.html">PUBLISH NEWS</a></li>
+                        <li><a href="adminMakeAnnouncement.html">MAKE ANNOUNCEMENT</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>REGISTERED STUDENTS</h3>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>Student Name</th>
+                            @*<th>Contact No</th>*@
+                            <th>Enrolled Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.viewer_id</td>
+                                @*<td>@item.</td>*@
+                                <td>@item.viewer_coursename</td>
+                            </tr>
+                        }
+
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

@@ -14,11 +14,20 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
     
     public partial class TeacherRegisteredCours
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TeacherRegisteredCours()
+        {
+            this.URLs = new HashSet<URL>();
+        }
+    
         public int id { get; set; }
         public string CourseName { get; set; }
         public string TeacherName { get; set; }
         public int TeacherId { get; set; }
         public string Timing { get; set; }
         public string Days { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<URL> URLs { get; set; }
     }
 }

@@ -34,5 +34,7 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public virtual DbSet<TeacherRegisteredCours> TeacherRegisteredCourses { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Viewer_Table> Viewer_Table { get; set; }
+        public virtual DbSet<Administrator> Administrators { get; set; }
+        public virtual DbSet<URL> URLs { get; set; }
     }
 }

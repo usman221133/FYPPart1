@@ -212,6 +212,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HomeStartPageController.cs" />
     <Compile Include="Controllers\LoginAndSignUpController.cs" />
@@ -223,6 +224,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\GeneratedClassesByEF\Administrator.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Cours.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
@@ -259,6 +263,9 @@
     <Compile Include="Models\GeneratedClassesByEF\TeacherRegisteredCours.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GeneratedClassesByEF\URL.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\User.cs">
       <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
@@ -275,6 +282,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\About.css" />
+    <Content Include="Content\adminDashboard.css" />
+    <Content Include="Content\adminRegisteredStudents.css" />
+    <Content Include="Content\adminRegisteredTeachers.css" />
+    <Content Include="Content\adminTimeTable.css" />
     <Content Include="Content\all.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -433,6 +444,10 @@
     <Content Include="Views\Teacher\Classroom.cshtml" />
     <Content Include="Views\Teacher\TeacherRegisterCourse.cshtml" />
     <Content Include="Views\Teacher\TimeTable.cshtml" />
+    <Content Include="Views\Administrator\Index.cshtml" />
+    <Content Include="Views\Administrator\RegisteredTeacherCourses.cshtml" />
+    <Content Include="Views\Administrator\RegisteredStudentCourses.cshtml" />
+    <Content Include="Views\Administrator\TimeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
