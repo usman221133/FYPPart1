@@ -20,13 +20,13 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="menu">
-                    <img class="logo" src="Images/logo1.png">
+                    <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li><a href="#">HOME</a></li>
-                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.Viewer_id })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
-                        <li>@Html.ActionLink("REGISTRATION", "RegisterCourse", new { id = ViewBag.Viewer_id })</li>
-                        <li><a href="#">TIME TABLE</a></li>
-                        <li><a href="#">CLASS ROOM</a></li>
+                        <li>@Html.ActionLink("HOME", "LadingPage", new { userid = ViewBag.UserID })</li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.Viewer_id }, new { @target = "_blank" })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = ViewBag.Viewer_id })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = ViewBag.Viewer_id })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = ViewBag.Viewer_id })</li>
                         <li><a href="#">LATEST NEWS</a></li>
                     </ul>
                 </div>

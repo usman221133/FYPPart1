@@ -5,9 +5,7 @@
 }
 
 <link href="~/Content/StudentProfilePage.css" rel="stylesheet" />
-<link href="~/Content/all.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.css" rel="stylesheet" />
-<link href="~/Content/studentDashboard.css" rel="stylesheet" />
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -16,21 +14,7 @@
     <link href="TeacherProfile.css" rel="stylesheet">
 </head>
 <body>
-     <div class="row">
-        <div class="col-sm-3">
-            <div class="menu">
-                <img class="logo" src="~/Image/logo1.png">
-                <ul>
-                    <li>@Html.ActionLink("HOME", "LadingPage", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.Viewer_ID })</li>
-                    <li><a href="#">LATEST NEWS</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-9">
+     
             <div class="Box">
 
                 <h1> Student Profile</h1>
@@ -86,8 +70,7 @@
                 </div>
 
             </div>
-        </div>
-    </div>
+    
 
 </body>
 </html>

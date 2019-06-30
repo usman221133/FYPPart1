@@ -19,7 +19,7 @@ namespace KnowledgeHub.Controllers
             //var res = db.Viewer_Table.Where(x => x.Viewer_Email == User.Email).ToList();
 
             //return View(res);
-            return RedirectToAction("LadingPage", new { viewerid = User.UserID });
+            return RedirectToAction("LadingPage", new { userid = User.UserID });
         }
 
         [HttpGet]
@@ -35,10 +35,10 @@ namespace KnowledgeHub.Controllers
             return View();
         }
 
-        public ActionResult LadingPage(int viewerid)
+        public ActionResult LadingPage(int userid)
         {
             //var user = db.Viewer_Table.Where(x => x.Viewer_Email == email).FirstOrDefault();
-            var student = db.Viewer_Table.Where(x => x.Viewer_ID == viewerid).FirstOrDefault();
+            var student = db.Viewer_Table.Where(x => x.UserID == userid).FirstOrDefault();
 
             //for registered courses
             var qry = db.StudentRegisteredCourses.Where(x => x.viewer_id == student.Viewer_ID).ToList();
@@ -50,11 +50,12 @@ namespace KnowledgeHub.Controllers
         public ActionResult TeacherRegisterCourse(int id)
         {
             //var user = db.Viewer_Table.Where(x => x.Viewer_Email == email).FirstOrDefault();
-            //var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
+            var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
 
             //for registered courses
             var qry = db.TeacherRegisteredCourses.ToList();
             ViewBag.Viewer_id = id;
+            ViewBag.UserID = student.UserID;
 
             return View(qry);
         }
@@ -64,12 +65,19 @@ namespace KnowledgeHub.Controllers
             var qry = db.StudentRegisteredCourses.Where(s=>s.viewer_id == id).ToList();
             ViewBag.Viewer_id = id;
 
+            var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
+            ViewBag.UserID = student.UserID;
+
             return View(qry);
         }
 
         public ActionResult Classroom(int id)
         {
             var qry = db.StudentRegisteredCourses.Where(s=>s.viewer_id == id).ToList();
+
+            var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
+            ViewBag.UserID = student.UserID;
+
             return View(qry);
         }
 

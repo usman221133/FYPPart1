@@ -20,10 +20,10 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="menu">
-                    <img class="logo" src="Images/logo1.png">
+                    <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li><a href="studentDashboard.html">HOME</a></li>
-                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.FirstOrDefault().viewer_id })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("HOME", "LadingPage", new { userid = ViewBag.UserID }) </li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.FirstOrDefault().viewer_id }, new { @target = "_blank" })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
                         <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.FirstOrDefault().viewer_id })</li>
                         <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.FirstOrDefault().viewer_id })</li>
                         <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.FirstOrDefault().viewer_id })</li>
@@ -50,8 +50,9 @@
                                         <p>@item.days</p>
                                     </div>
                                 </a>
-                            </div>
+                            </div><br />  
                         </div>
+                    
                     }
                    
                     @*<div class="col-sm-6">

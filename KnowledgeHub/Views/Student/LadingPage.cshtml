@@ -13,62 +13,56 @@
   
 </head>
 <body>
-
-    <div class="row">
-        <div class="col-sm-3">
-            <div class="menu">
-                <img class="logo" src="~/Image/logo1.png">
-                <ul>
-                    <li><a href="#">HOME</a></li>
-                    <li>@Html.ActionLink("VIEW PROFILE","ViewProfile",new { id=Model.Viewer_ID})  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
-                    <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.Viewer_ID })</li>
-                    <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.Viewer_ID })</li>
-                    <li><a href="#">LATEST NEWS</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-sm-9">
-            <h3>Welcome @Model.Viewer_Name</h3>
-            <div class="details">
-                <img class="picture1" src="~/Image/avatar3.png">
-                <a href="#">Logout</a>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="details2">
-                        <h4>My Courses:</h4>
-                        @{List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours> oList = new List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>();
-                            oList.AddRange(ViewBag.RegCourses);
-
-                            foreach (var item in oList)
-                            {
-                                <h6>@item.viewer_coursename</h6>
-                            }
-                        }
-                    </div>
-                        @*<div class="details2">
-                            <h4>My Courses:</h4>
-                            <h6>Object Oriented Programing</h6>
-                            <h6>Database Management System</h6>
-                            <h6>Introduction to Computing</h6>
-                        </div>*@
-                    </div>
-                <div class="col-sm-6">
-                    <div class="details3">
-                        <h4>New Courses:</h4>
-                        <h6>Computer Programing</h6>
-                        <h6>Psychology</h6>
-                        <h6>Marketing</h6>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="~/Image/logo1.png">
+                    <ul>
+                        <li><a href="#">HOME</a></li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.Viewer_ID }, new { @target = "_blank" })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.Viewer_ID })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.Viewer_ID })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.Viewer_ID })</li>
+                        <li><a href="studentLatestNews.html">LATEST NEWS</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="details4">
-                <h4>Announcement!</h4>
-                <h6>There is no Announcement yet</h6>
+            <div class="col-sm-9">
+                <h3>Welcome @Model.Viewer_Name</h3>
+                <div class="details">
+                    <img class="picture1" src="~/Image/avatar3.png">
+                    <a href="/HomeStartPage/Index">Logout</a>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="details2">
+                            <h4>My Courses:</h4>
+                            @{List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours> oList = new List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>();
+                                oList.AddRange(ViewBag.RegCourses);
+
+                                foreach (var item in oList)
+                                {
+                                    <h6>@item.viewer_coursename</h6>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="details3">
+                            <h4>New Courses:</h4>
+                            <h6>Computer Programing</h6>
+                            <h6>Psychology</h6>
+                            <h6>Marketing</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="details4">
+                    <h4>Announcement!</h4>
+                    <h6>There is no Announcement yet</h6>
+                </div>
             </div>
         </div>
     </div>
-
 </body>
 </html>

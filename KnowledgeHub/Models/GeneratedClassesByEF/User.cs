@@ -14,6 +14,13 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
     
     public partial class User
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public User()
+        {
+            this.Presenter_Table = new HashSet<Presenter_Table>();
+            this.Viewer_Table = new HashSet<Viewer_Table>();
+        }
+    
         public int UserID { get; set; }
         public string Name { get; set; }
         public string City { get; set; }
@@ -23,5 +30,10 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public string PhoneNumber { get; set; }
         public string Gender { get; set; }
         public Nullable<int> RoleID { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Presenter_Table> Presenter_Table { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Viewer_Table> Viewer_Table { get; set; }
     }
 }

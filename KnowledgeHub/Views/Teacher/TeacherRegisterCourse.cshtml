@@ -1,0 +1,100 @@
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<head>
+    <title>Teacher Registration</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/teacherRegistration.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="~/Image/logo1.png">
+                    <ul>
+                        <li>@Html.ActionLink("HOME", "LandingPage", new { userid = ViewBag.UserID })</li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.presenterID }, new { @target = "_blank" })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "RegisterCourse", new { id = ViewBag.presenterID })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = ViewBag.presenterID })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = ViewBag.presenterID })</li>
+                        <li><a href="teacherLatestNews.html">LATEST NEWS</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>REGISTRATION</h3>
+                <div class="addCourse">
+                    <form>
+                        <h6>Course Name</h6>
+                        <input type="text" id="tbCourseName" placeholder="Enter Course Name">
+                        <h6>Day</h6>
+                        <select id="ddlDays">
+                            <option value="Monday">Monday</option>
+                            <option value="Tuesday">Tuesday</option>
+                            <option value="Wednessday">Wednessday</option>
+                            <option value="Thursday">Thursday</option>
+                            <option value="Friday">Friday</option>
+                            <option value="Saturday">Saturday</option>
+                            <option value="Sunday">Sunday</option>
+                        </select>
+                        <h6>Time</h6>
+                        <select id="ddlTimings">
+                            <option>8am - 10am</option>
+                            <option>10am - 12pm</option>
+                            <option>12pm - 2pm</option>
+                            <option>2pm - 4pm</option>
+                            <option>4pm - 6pm</option>
+                            <option>6pm - 8pm</option>
+                            <option>8pm - 10pm</option>
+                        </select>
+                        </br>
+                        <input type="button" value="Confirm" onclick="submitCourse()">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+    function submitCourse() {
+        debugger;
+       
+        var html = '';
+        $.ajax({
+            url: "/Teacher/InsertCourse",
+            data: JSON.stringify({
+                "courseName": $("#tbCourseName").val(),
+                "DDLDays": $("#ddlDays option:selected").val(),
+                "DDLTimings": $("#ddlTimings option:selected").text(),
+                "teacherId": @ViewBag.presenterID
+            }),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+              
+                    alert("Course Registered Successfully");
+                    document.getElementById('tbCourseName').value = "";
+            },
+            error: function () {
+                alert("Oops, something wrong happened");
+            }
+        });
+
+    }
+
+</script>

@@ -34,8 +34,10 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public string DOB_Days { get; set; }
         public string DOB_Months { get; set; }
         public string DOB_Year { get; set; }
+        public Nullable<int> UserID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Login_Table> Login_Table { get; set; }
+        public virtual User User { get; set; }
     }
 }

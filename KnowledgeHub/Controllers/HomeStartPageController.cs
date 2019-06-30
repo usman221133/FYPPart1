@@ -11,6 +11,7 @@ namespace KnowledgeHub.Controllers
         // GET: HomeStartPage
         public ActionResult Index()
         {
+            Session.Clear();
             return View();
         }
         public ActionResult Services()

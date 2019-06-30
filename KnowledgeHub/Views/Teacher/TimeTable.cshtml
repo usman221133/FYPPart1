@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours>
 
 @{
     Layout = null;
@@ -8,10 +8,10 @@
 
 <html>
 <head>
-    <title>Student TimeTable</title>
+    <title>Teacher TimeTable</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/all.css" rel="stylesheet" />
-    <link href="~/Content/studentTimeTable.css" rel="stylesheet">
+    <link href="~/Content/teacherTimeTable.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -20,12 +20,12 @@
                 <div class="menu">
                     <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li>@Html.ActionLink("HOME", "LadingPage", new { userid = ViewBag.UserID })</li>
-                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.Viewer_id }, new { @target = "_blank" })</li>
-                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = ViewBag.Viewer_id })</li>
-                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = ViewBag.Viewer_id })</li>
-                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = ViewBag.Viewer_id })</li>
-                        <li><a href="#">LATEST NEWS</a></li>
+                        <li>@Html.ActionLink("HOME", "LandingPage", new { userid = ViewBag.UserID })</li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = ViewBag.presenterID }, new { @target = "_blank" })</li>
+                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = ViewBag.presenterID })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = ViewBag.presenterID })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = ViewBag.presenterID })</li>
+                        <li><a href="teacherLatestNews.html">LATEST NEWS</a></li>
                     </ul>
                 </div>
             </div>
@@ -44,19 +44,18 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>@item.viewer_coursename</td>
-                                <td>@item.teacher_name</td>
-                                <td>@item.timing</td>
-                                <td>@item.days</td>
+                                <td>@item.CourseName</td>
+                                <td>@item.TeacherName</td>
+                                <td>@item.Timing</td>
+                                <td>@item.Days</td>
                             </tr>
                         }
-                       
                     
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-   
+    </div>
 </body>
 </html>

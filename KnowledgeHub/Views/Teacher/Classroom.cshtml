@@ -20,33 +20,42 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="menu">
-                    <img class="logo" src="Images/logo1.png">
+                    <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li><a href="teacherDashboard.html">HOME</a></li>
-                        <li><a href="teacherProfile.html" target="_blank">VIEW PROFILE</a></li>
-                        <li><a href="teacherRegistration.html">REGISTRATION</a></li>
-                        <li><a href="teacherTimeTable.html">TIME TABLE</a></li>
-                        <li><a href="#">CLASS ROOM</a></li>
+                        <li>@Html.ActionLink("HOME", "LandingPage", new { userid = ViewBag.UserID }) </li>
+                        <li>@Html.ActionLink("VIEW PROFILE", "ViewProfile", new { id = Model.FirstOrDefault().TeacherId }, new { @target = "_blank" })  @*<a href="/Student/ViewProfile/@Model.Viewer_ID">VIEW PROFILE</a>*@</li>
+                        <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.FirstOrDefault().TeacherId })</li>
+                        <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.FirstOrDefault().TeacherId })</li>
+                        <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.FirstOrDefault().TeacherId })</li>
                         <li><a href="teacherLatestNews.html">LATEST NEWS</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-9">
                 <h3>Class Room</h3>
+               
                 <div class="row">
-                    <div class="col-sm-6">
-                        <div class="class1">
-                            <a href="#">
-                                <div class="class11">
-                                    <h4>Computer Programing</h4>
-                                    <h6>Monday</h6>
-                                    <h6>10am - 12am</h6>
-                                    <p>Ahmed Raza</p>
-                                </div>
-                            </a>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-6">
+                            <div class="class1">
+                                <a href="#">
+                                    <div class="class11">
+                                        @*<h4>Computer Programing</h4>
+                            <h6>Monday</h6>
+                            <h6>10am - 12am</h6>
+                            <p>Ahmed Raza</p>*@
+                                        <h4>@item.CourseName</h4>
+                                        <h6>@item.Days</h6>
+                                        <h6>@item.Timing</h6>
+                                        <p>@item.TeacherName</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
+                    }
+
+                    @*<div class="col-sm-6">
                         <div class="class2">
                             <a href="#">
                                 <div class="class22">
@@ -69,11 +78,12 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
             </div>
         </div>
     </div>
+
 </body>
 </html>
 

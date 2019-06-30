@@ -96,21 +96,7 @@ namespace KnowledgeHub.Controllers
         {
             if (data.LoginAs =="Student")
             {
-                Viewer_Table oVT = new Viewer_Table
-                {
-                    Viewer_Name = data.Presenter_Name,
-                    Viewer_Ph_Num = data.Presenter_Ph_Num,
-                    Viewer_Email = data.Presenter_Email,
-                    Password = data.Password,
-                    ConfirmPassword = data.ConfirmPassword,
-                    DOB_Days = data.DOB_Days,
-                    DOB_Months = data.DOB_Months,
-                    DOB_Year = data.DOB_Year,
-                    Viewer_Gender = data.Presenter_Gender,
-                    Viewer_City = data.Presenter_City
-                };
-                db.Viewer_Table.Add(oVT);
-                db.SaveChanges();
+
 
                 User oUser = new User
                 {
@@ -122,30 +108,32 @@ namespace KnowledgeHub.Controllers
                     ConfirmPassword = data.ConfirmPassword,
                     Gender = data.Presenter_Gender,
                     RoleID = (int?)Common.Roles.Student
-                  
+
                 };
                 db.Users.Add(oUser);
                 db.SaveChanges();
-            }
-            else
-            {
-                Presenter_Table oPT = new Presenter_Table
+
+                Viewer_Table oVT = new Viewer_Table
                 {
-                    Presenter_Name = data.Presenter_Name,
-                    Presenter_Ph_Num = data.Presenter_Ph_Num,
-                    Presenter_Email = data.Presenter_Email,
+                    Viewer_Name = data.Presenter_Name,
+                    Viewer_Ph_Num = data.Presenter_Ph_Num,
+                    Viewer_Email = data.Presenter_Email,
                     Password = data.Password,
                     ConfirmPassword = data.ConfirmPassword,
                     DOB_Days = data.DOB_Days,
                     DOB_Months = data.DOB_Months,
                     DOB_Year = data.DOB_Year,
-                    Presenter_Gender = data.Presenter_Gender,
-                    Presenter_City = data.Presenter_City
-
+                    Viewer_Gender = data.Presenter_Gender,
+                    Viewer_City = data.Presenter_City,
+                    UserID = oUser.UserID
+                    
                 };
-                db.Presenter_Table.Add(oPT);
+                db.Viewer_Table.Add(oVT);
                 db.SaveChanges();
 
+            }
+            else
+            {
                 User oUser = new User
                 {
                     Name = data.Presenter_Name,
@@ -160,6 +148,26 @@ namespace KnowledgeHub.Controllers
                 };
                 db.Users.Add(oUser);
                 db.SaveChanges();
+
+                Presenter_Table oPT = new Presenter_Table
+                {
+                    Presenter_Name = data.Presenter_Name,
+                    Presenter_Ph_Num = data.Presenter_Ph_Num,
+                    Presenter_Email = data.Presenter_Email,
+                    Password = data.Password,
+                    ConfirmPassword = data.ConfirmPassword,
+                    DOB_Days = data.DOB_Days,
+                    DOB_Months = data.DOB_Months,
+                    DOB_Year = data.DOB_Year,
+                    Presenter_Gender = data.Presenter_Gender,
+                    Presenter_City = data.Presenter_City,
+                    UserID=oUser.UserID
+
+                };
+                db.Presenter_Table.Add(oPT);
+                db.SaveChanges();
+
+                
             }
           
             return View();

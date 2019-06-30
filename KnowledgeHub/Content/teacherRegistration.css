@@ -61,83 +61,58 @@ h3
     font-weight: bold;
 }
 
-.details
-{
-    float: right;
-    margin-top: -20px;
-}
-
-.details .picture1
-{
-    width: 60px;
-    border-radius: 50%;
-    display: block;
-}
-
-.details a
-{
-    font-size: 12px;
-    display: block;
-    text-align: center;
-}
-
-.details2
-{
-    background-color: gray;
-    border-radius: 10px;
-    margin-top: 50px;
-    margin-left: 30px;
-    width: 280px;
-    padding: 5px;
-}
-
-.details2 h4
-{
-    margin: 10px;
-}
-
-.details2 h6
-{
-    margin: 10px;
-}
-
-.details3
-{
-    background-color: gray;
-    border-radius: 10px;
-    width: 250px;
-    margin-top: 50px;
-    width: 280px;
-    padding: 5px;
-}
-
-.details3 h4
-{
-    margin: 10px;
-}
-
-.details3 h6
-{
-    margin: 10px;
-}
-
-.details4
+form
 {
     margin-top: 50px;
-    background-color: gray;
+    margin-left: 20PX;
+    background-image: url(../Image/bg13.jpg);
+    padding: 30px;
+    width: fit-content;
     border-radius: 10px;
-    width: 78%;
-    margin-left: 30px;
 }
 
-.details4 h4
+form h6
 {
-    padding-top: 10px;
-    margin: 10px;
+    color: white;
+    font-size: 20px;
+    margin: 10px 0px 5px 0px;
 }
 
-.details4 h6
+form input[type="text"]
 {
-    padding-bottom: 60px;
-    margin: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 2px;
+    font-size: 18px;
+    color: white;
+    background-color: black;
+}
+
+form input[type="submit"]
+{
+    margin-top: 20px;
+    padding: 5px 8px 5px 8px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+}
+
+form input[type="submit"]:hover
+{
+    cursor: pointer;
+}
+
+form select
+{
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 2px;
+    border:  none;
+    color: white;
+    background-color: black;
+}
+
+form select > option
+{
+    
 }

@@ -223,6 +223,9 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\GeneratedClassesByEF\Cours.cs">
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,6 +290,8 @@
     <Content Include="Content\teacherClassroom.css" />
     <Content Include="Content\teacherDashboard.css" />
     <Content Include="Content\TeacherProfilePage.css" />
+    <Content Include="Content\teacherRegistration.css" />
+    <Content Include="Content\teacherTimeTable.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -298,6 +303,11 @@
     <Content Include="Image\avatar2.jpg" />
     <Content Include="Image\avatar3.png" />
     <Content Include="Image\bg1.jpg" />
+    <Content Include="Image\bg10.jpg" />
+    <Content Include="Image\bg11.jpg" />
+    <Content Include="Image\bg12.jpg" />
+    <Content Include="Image\bg13.jpg" />
+    <Content Include="Image\bg14.jpg" />
     <Content Include="Image\bg2.jpg" />
     <Content Include="Image\bg3.jpg" />
     <Content Include="Image\bg4.jpg" />
@@ -305,6 +315,7 @@
     <Content Include="Image\bg6.jpg" />
     <Content Include="Image\bg7.jpg" />
     <Content Include="Image\bg8.jpg" />
+    <Content Include="Image\bg9.png" />
     <Content Include="Image\logo1.png" />
     <Content Include="Image\Logo2.png" />
     <Content Include="Image\OriginalLogo.png" />
@@ -420,6 +431,8 @@
     <Content Include="Views\Student\Classroom.cshtml" />
     <Content Include="Views\Teacher\LandingPage.cshtml" />
     <Content Include="Views\Teacher\Classroom.cshtml" />
+    <Content Include="Views\Teacher\TeacherRegisterCourse.cshtml" />
+    <Content Include="Views\Teacher\TimeTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
