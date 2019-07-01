@@ -17,7 +17,7 @@
                 <div class="menu">
                     <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li><a href="#">HOME</a></li>
+                        <li>@Html.ActionLink("HOME", "Index", new { id = "" })</li>
                         <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id=""})</li>
                         <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
                         <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>

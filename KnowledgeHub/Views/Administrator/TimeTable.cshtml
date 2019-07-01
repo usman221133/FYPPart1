@@ -21,10 +21,10 @@
                 <div class="menu">
                     <img class="logo" src="~/Image/logo1.png">
                     <ul>
-                        <li><a href="adminDashboard.html">HOME</a></li>
-                        <li><a href="adminRegisteredTeachers.html">REGISTERED TEACHERS</a></li>
-                        <li><a href="adminRegisteredStudents.html">REGISTERED STUDENTS</a></li>
-                        <li><a href="#">COURSES TIMETABLE</a></li>
+                        <li>@Html.ActionLink("HOME", "Index", new { id = "" })</li>
+                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>
                         <li><a href="adminPublishNews.html">PUBLISH NEWS</a></li>
                         <li><a href="adminMakeAnnouncement.html">MAKE ANNOUNCEMENT</a></li>
                     </ul>
