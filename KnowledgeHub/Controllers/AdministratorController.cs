@@ -13,7 +13,12 @@ namespace KnowledgeHub.Controllers
         // GET: Administrator
         public ActionResult Index()
         {
-            return View();
+            var res = db.StudentRegisteredCourses.ToList();
+            ViewBag.RegStudentCourses = res;
+
+
+            var qry = db.TeacherRegisteredCourses.ToList();
+            return View(qry);
         }
 
         public ActionResult RegisteredTeacherCourses()

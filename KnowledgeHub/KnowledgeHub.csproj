@@ -225,58 +225,58 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\GeneratedClassesByEF\Administrator.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Announcemnet.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Cours.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\CoursesVideosURL.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GeneratedClassesByEF\EFModelCLasses.Context.cs">
+    <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EFModelCLasses.Context.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GeneratedClassesByEF\EFModelCLasses.cs">
+    <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\GeneratedClassesByEF\EFModelCLasses.Designer.cs">
+    <Compile Include="Models\GeneratedClassesByEF\EFModelClasses.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EFModelCLasses.edmx</DependentUpon>
+      <DependentUpon>EFModelClasses.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Login_Table.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\NEWS.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Presenter_Table.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\StudentRegisteredCours.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\sysdiagram.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\tbl_roles.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\TeacherRegisteredCours.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\User.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GeneratedClassesByEF\Viewer_Table.cs">
-      <DependentUpon>EFModelCLasses.tt</DependentUpon>
+      <DependentUpon>EFModelClasses.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -342,15 +342,15 @@
     <Content Include="Image\Logo2.png" />
     <Content Include="Image\OriginalLogo.png" />
     <Content Include="Image\pic1.jpg" />
-    <Content Include="Models\GeneratedClassesByEF\EFModelCLasses.Context.tt">
+    <Content Include="Models\GeneratedClassesByEF\EFModelClasses.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EFModelCLasses.edmx</DependentUpon>
-      <LastGenOutput>EFModelCLasses.Context.cs</LastGenOutput>
+      <DependentUpon>EFModelClasses.edmx</DependentUpon>
+      <LastGenOutput>EFModelClasses.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\GeneratedClassesByEF\EFModelCLasses.tt">
+    <Content Include="Models\GeneratedClassesByEF\EFModelClasses.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>EFModelCLasses.edmx</DependentUpon>
-      <LastGenOutput>EFModelCLasses.cs</LastGenOutput>
+      <DependentUpon>EFModelClasses.edmx</DependentUpon>
+      <LastGenOutput>EFModelClasses.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -363,12 +363,12 @@
     <Content Include="webfonts\fa-light-300.svg" />
     <Content Include="webfonts\fa-regular-400.svg" />
     <Content Include="webfonts\fa-solid-900.svg" />
-    <EntityDeploy Include="Models\GeneratedClassesByEF\EFModelCLasses.edmx">
+    <EntityDeploy Include="Models\GeneratedClassesByEF\EFModelClasses.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>EFModelCLasses.Designer.cs</LastGenOutput>
+      <LastGenOutput>EFModelClasses.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\GeneratedClassesByEF\EFModelCLasses.edmx.diagram">
-      <DependentUpon>EFModelCLasses.edmx</DependentUpon>
+    <Content Include="Models\GeneratedClassesByEF\EFModelClasses.edmx.diagram">
+      <DependentUpon>EFModelClasses.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

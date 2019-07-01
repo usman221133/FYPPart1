@@ -4,15 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="23abf6ba9e2044599e897814c1c13950" Name="Diagram1">
+      <Diagram DiagramId="3700e56f7fb24a939f3df147a36a8003" Name="Diagram1">
         <EntityTypeShape EntityType="KnwoledgeHubModel.Administrator" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.Cours" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.Announcemnet" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.Cours" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.CoursesVideosURL" Width="1.5" PointX="8" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Login_Table" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.NEWS" Width="1.5" PointX="9.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Presenter_Table" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.StudentRegisteredCours" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.sysdiagram" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.tbl_roles" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.StudentRegisteredCours" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.sysdiagram" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KnwoledgeHubModel.tbl_roles" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.TeacherRegisteredCours" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.User" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="KnwoledgeHubModel.Viewer_Table" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
@@ -22,8 +24,6 @@
         <AssociationConnector Association="KnwoledgeHubModel.FK_Login_Table_Presenter_Table" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK__Presenter__UserI__412EB0B6" ManuallyRouted="false" />
         <AssociationConnector Association="KnwoledgeHubModel.FK__Viewer_Ta__UserI__403A8C7D" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.Announcemnet" Width="1.5" PointX="5.375" PointY="10.75" />
-        <EntityTypeShape EntityType="KnwoledgeHubModel.NEWS" Width="1.5" PointX="7.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

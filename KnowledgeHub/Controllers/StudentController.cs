@@ -81,6 +81,8 @@ namespace KnowledgeHub.Controllers
             var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
             ViewBag.UserID = student.UserID;
 
+            ViewBag.CoursesURL = db.CoursesVideosURLs.ToList();
+
             return View(qry);
         }
 
@@ -101,6 +103,7 @@ namespace KnowledgeHub.Controllers
         {
             
             var User = ((List<User>)Session["UserSession"])[0];
+            var qry = db.Viewer_Table.Where(s=>s.UserID == User.UserID).FirstOrDefault();
             if (data.Count > 0)
             {
                 for (int i = 0; i < data.Count; i++)
@@ -111,9 +114,10 @@ namespace KnowledgeHub.Controllers
                         teacher_id =Convert.ToInt32(data[i].TeacherId),
                         teacher_name = data[i].TeacherName,
                         viewer_courseid = data[i].id,
-                        viewer_id =User.UserID,
+                        viewer_id =qry.Viewer_ID,
                         timing = data[i].Timing,
-                        days = data[i].Days
+                        days = data[i].Days,
+                        viewer_name = qry.Viewer_Name
                     };
                     db.StudentRegisteredCourses.Add(oSRC);
                     db.SaveChanges();
@@ -130,8 +134,10 @@ namespace KnowledgeHub.Controllers
         {
             List<CoursesVideosURL> qry = new List<CoursesVideosURL>();
             qry.AddRange(db.CoursesVideosURLs.Where(x=>x.Course_id == CourseId).ToList());
-            //JsonConvert.SerializeObject(qry);
-            return Json(qry);
+                       
+            return Json(qry, JsonRequestBehavior.AllowGet);
         }
+
+      
     }
 }

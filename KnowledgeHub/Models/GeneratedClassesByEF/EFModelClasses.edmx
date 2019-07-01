@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="KnwoledgeHubModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administrator">
           <Key>
             <PropertyRef Name="id" />
@@ -90,6 +90,7 @@
           <Property Name="teacher_name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="timing" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="days" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="viewer_name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -264,7 +265,8 @@
             <End Role="Login_Table" EntitySet="Login_Table" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KnwoledgeHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -277,6 +279,13 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Announcemnet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Announcement" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Cours">
           <Key>
@@ -307,6 +316,13 @@
           <Property Name="Login_Password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Viewer_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Login_Table" ToRole="Viewer_Table" />
           <NavigationProperty Name="Presenter_Table" Relationship="Self.FK_Login_Table_Presenter_Table" FromRole="Login_Table" ToRole="Presenter_Table" />
+        </EntityType>
+        <EntityType Name="NEWS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="News1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="Presenter_Table">
           <Key>
@@ -345,6 +361,7 @@
           <Property Name="teacher_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="timing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="viewer_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -488,9 +505,11 @@
         </Association>
         <EntityContainer Name="KnwoledgeHubEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administrators" EntityType="Self.Administrator" />
+          <EntitySet Name="Announcemnets" EntityType="Self.Announcemnet" />
           <EntitySet Name="Courses" EntityType="Self.Cours" />
           <EntitySet Name="CoursesVideosURLs" EntityType="Self.CoursesVideosURL" />
           <EntitySet Name="Login_Table" EntityType="Self.Login_Table" />
+          <EntitySet Name="NEWS" EntityType="Self.NEWS" />
           <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" />
           <EntitySet Name="StudentRegisteredCourses" EntityType="Self.StudentRegisteredCours" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
@@ -522,23 +541,7 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Viewer_Table" EntitySet="Viewer_Table" />
           </AssociationSet>
-          <EntitySet Name="Announcemnets" EntityType="KnwoledgeHubModel.Announcemnet" />
-          <EntitySet Name="NEWS" EntityType="KnwoledgeHubModel.NEWS" />
         </EntityContainer>
-        <EntityType Name="Announcemnet">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Announcement" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="NEWS">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="News1" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -553,6 +556,14 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcemnets">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Announcemnet">
+              <MappingFragment StoreEntitySet="Announcemnet">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Announcement" ColumnName="Announcement" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -582,6 +593,14 @@
                 <ScalarProperty Name="Presenter_ID" ColumnName="Presenter_ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Login_Password" ColumnName="Login_Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NEWS">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.NEWS">
+              <MappingFragment StoreEntitySet="NEWS">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="News1" ColumnName="News" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -620,6 +639,7 @@
                 <ScalarProperty Name="teacher_name" ColumnName="teacher_name" />
                 <ScalarProperty Name="timing" ColumnName="timing" />
                 <ScalarProperty Name="days" ColumnName="days" />
+                <ScalarProperty Name="viewer_name" ColumnName="viewer_name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -687,22 +707,6 @@
                 <ScalarProperty Name="DOB_Months" ColumnName="DOB_Months" />
                 <ScalarProperty Name="DOB_Year" ColumnName="DOB_Year" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Announcemnets">
-            <EntityTypeMapping TypeName="KnwoledgeHubModel.Announcemnet">
-              <MappingFragment StoreEntitySet="Announcemnet">
-                <ScalarProperty Name="Announcement" ColumnName="Announcement" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NEWS">
-            <EntityTypeMapping TypeName="KnwoledgeHubModel.NEWS">
-              <MappingFragment StoreEntitySet="NEWS">
-                <ScalarProperty Name="News1" ColumnName="News" />
-                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours>
 @{
     Layout = null;
 }
@@ -18,7 +18,7 @@
                     <img class="logo" src="~/Image/logo1.png">
                     <ul>
                         <li>@Html.ActionLink("HOME", "Index", new { id = "" })</li>
-                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id=""})</li>
+                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id = "" })</li>
                         <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
                         <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>
                         <li><a href="adminPublishNews.html">PUBLISH NEWS</a></li>
@@ -30,26 +30,40 @@
                 <h3>Welcome Usman</h3>
                 <div class="details">
                     <img class="picture1" src="~/Image/avatar3.png">
-                    <a href="#">Logout</a>
+                    <a href="/HomeStartPage/Index"">Logout</a>
                 </div>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="details2">
                             <h4>Total Offered Courses:</h4>
-                            <h6>Object Oriented Programing</h6>
-                            <h6>Database Management System</h6>
-                            <h6>Introduction to Computing</h6>
-                            <h6>Marketing</h6>
-                            <h6>Psychology</h6>
-                            <h6>Computer Programming</h6>
+
+                            @foreach (var item in Model)
+                            {
+                                  <h6>@item.CourseName</h6>
+
+                            }
+
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="details3">
                             <h4>Total Registered Courses:</h4>
-                            <h6>Computer Programing</h6>
-                            <h6>Psychology</h6>
-                            <h6>Marketing</h6>
+                            @{
+                                List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours> oRegCou = new List<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours>();
+                                oRegCou.AddRange(ViewBag.RegStudentCourses);
+                                if (oRegCou.Count > 0)
+                                {
+                                    foreach (var item1 in oRegCou)
+                                    {
+                                        <div><h6>@item1.viewer_coursename</h6></div>
+                                    }
+                                }
+                                else
+                                {
+                                    <h6>No Announcement has been yet!</h6>
+                                }
+                            }
+                                
                         </div>
                     </div>
                 </div>

@@ -4,8 +4,6 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
-
 
 <html>
 <head>
@@ -15,7 +13,9 @@
     <link href="~/Content/studentClassroom.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
 </head>
+
 <body>
+
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
@@ -38,47 +38,47 @@
                     {
                         <div class="col-sm-6">
                             <div class="class1">
-                                <a href="#"onclick="openModal(@item.viewer_courseid)">
+                                <a href="#" onclick="openModal(@item.viewer_courseid)">
                                     <div class="class11">
                                         @*<h4>Computer Programing</h4>
-                                        <h6>Monday</h6>
-                                        <h6>10am - 12am</h6>
-                                        <p>Ahmed Raza</p>*@
+                                            <h6>Monday</h6>
+                                            <h6>10am - 12am</h6>
+                                            <p>Ahmed Raza</p>*@
                                         <h4>@item.viewer_coursename</h4>
                                         <h6>@item.teacher_name</h6>
                                         <h6>@item.timing</h6>
                                         <p>@item.days</p>
                                     </div>
                                 </a>
-                            </div><br />  
+                            </div><br />
                         </div>
-                    
+
                     }
-                   
+
                     @*<div class="col-sm-6">
-                        <div class="class2">
-                            <a href="#">
-                                <div class="class22">
-                                    <h4>Marketing</h4>
-                                    <h6>Tuesday</h6>
-                                    <h6>12pm - 2pm</h6>
-                                    <p>Ahmed Raza</p>
-                                </div>
-                            </a>
+                            <div class="class2">
+                                <a href="#">
+                                    <div class="class22">
+                                        <h4>Marketing</h4>
+                                        <h6>Tuesday</h6>
+                                        <h6>12pm - 2pm</h6>
+                                        <p>Ahmed Raza</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="class3">
-                            <a href="#">
-                                <div class="class33">
-                                    <h4>Psychology</h4>
-                                    <h6>Wednessday</h6>
-                                    <h6>2pm - 4pm</h6>
-                                    <p>Farhan Bukhari</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>*@
+                        <div class="col-sm-6">
+                            <div class="class3">
+                                <a href="#">
+                                    <div class="class33">
+                                        <h4>Psychology</h4>
+                                        <h6>Wednessday</h6>
+                                        <h6>2pm - 4pm</h6>
+                                        <p>Farhan Bukhari</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>*@
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@
                                     </tr>
                                 </thead>
 
-                                <tbody id="CourseURLTable"></tbody>
+                                <tbody class="CourseURLTable"></tbody>
                             </table>
                         </div>
                     </div>
@@ -119,20 +119,20 @@
 
 
 
-
 <script type="text/javascript">
+ 
     $(document).ready(function () {
 
         $("#btnCloseRFIPU").click(function () {
             $("#ModalCourses").hide();
         });
-
-
+       
     });
-    function openModal(id)
-    {
+
+
+    function openModal(id) {
         debugger
- 
+       
         var html = '';
         $.ajax({
             url: "/Student/ShowURL",
@@ -145,11 +145,11 @@
                 $.each(result, function (key, item) {
                     debugger
                     html += '<tr>';
-                    html += '<td>' +item.CourseURL+  '</td>';
+                    html += '<td>' + item.CourseName + '</td>';
                     html += '</tr>';
 
                 });
-                $("#CourseURLTable").html(html);
+                $(".CourseURLTable").html(html);
                 $("#ModalCourses").show();
             },
             error: function () {
@@ -157,7 +157,7 @@
             }
         });
 
-        
+
     }
 
 

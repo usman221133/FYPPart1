@@ -111,6 +111,9 @@ namespace KnowledgeHub.Controllers
         public ActionResult SignUpUser(PresenterViewerModel data)
 
         {
+            ViewBag.Months = Common.GetList("Months");
+            ViewBag.Days = Common.GetList("Days");
+            ViewBag.Years = Common.GetList("Years");
             if (data.LoginAs =="Student")
             {
 
@@ -187,7 +190,7 @@ namespace KnowledgeHub.Controllers
                 
             }
           
-            return View();
+            return RedirectToAction("LoginUser");
         }
     }
 }

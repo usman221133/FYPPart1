@@ -22,5 +22,6 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public string teacher_name { get; set; }
         public string timing { get; set; }
         public string days { get; set; }
+        public string viewer_name { get; set; }
     }
 }
