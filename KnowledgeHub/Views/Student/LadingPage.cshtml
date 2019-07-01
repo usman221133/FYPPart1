@@ -24,7 +24,7 @@
                         <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.Viewer_ID })</li>
                         <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.Viewer_ID })</li>
                         <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.Viewer_ID })</li>
-                        <li><a href="studentLatestNews.html">LATEST NEWS</a></li>
+                        <li>@Html.ActionLink("LATEST NEWS", "LatestNews", new { id = Model.Viewer_ID })</li>
                     </ul>
                 </div>
             </div>
@@ -59,7 +59,22 @@
                 </div>
                 <div class="details4">
                     <h4>Announcement!</h4>
-                    <h6>There is no Announcement yet</h6>
+                   @{
+                       List<KnowledgeHub.Models.GeneratedClassesByEF.Announcemnet> oAnno = new List<KnowledgeHub.Models.GeneratedClassesByEF.Announcemnet>();
+                       oAnno.AddRange(ViewBag.AnnoList);
+                       if (oAnno.Count > 0)
+                       {
+                           foreach (var item1 in oAnno)
+                           {
+                            <div><h6>@item1.Announcement</h6></div>
+                           }
+                       }
+                       else
+                       {
+                        <h6>No Announcement has been yet!</h6>
+                       }
+                    
+                }
                 </div>
             </div>
         </div>

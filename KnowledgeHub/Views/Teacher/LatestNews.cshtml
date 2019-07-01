@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours>
+﻿@model IEnumerable<KnowledgeHub.Models.GeneratedClassesByEF.NEWS>
 
 @{
     Layout = null;
@@ -8,10 +8,10 @@
 
 <html>
 <head>
-    <title>Teacher TimeTable</title>
+    <title>Teacher Latest News</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/all.css" rel="stylesheet" />
-    <link href="~/Content/teacherTimeTable.css" rel="stylesheet">
+    <link href="~/Content/teacherLatestNews.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -30,32 +30,13 @@
                 </div>
             </div>
             <div class="col-sm-9">
-                <h3>TIME TABLE</h3>
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th>Courses Names</th>
-                            <th>Teachers Names</th>
-                            <th>Timings</th>
-                            <th>Days</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.CourseName</td>
-                                <td>@item.TeacherName</td>
-                                <td>@item.Timing</td>
-                                <td>@item.Days</td>
-                            </tr>
-                        }
-                    
-                    </tbody>
-                </table>
+                <h3>LATEST NEWS</h3>
+                @foreach (var item in Model)
+                {
+                    <div><p>@item.News1</p> </div>
+                }
             </div>
         </div>
-    </div>
     </div>
 </body>
 </html>

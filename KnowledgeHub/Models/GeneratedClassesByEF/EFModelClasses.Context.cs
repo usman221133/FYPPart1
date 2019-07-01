@@ -25,7 +25,9 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Administrator> Administrators { get; set; }
         public virtual DbSet<Cours> Courses { get; set; }
+        public virtual DbSet<CoursesVideosURL> CoursesVideosURLs { get; set; }
         public virtual DbSet<Login_Table> Login_Table { get; set; }
         public virtual DbSet<Presenter_Table> Presenter_Table { get; set; }
         public virtual DbSet<StudentRegisteredCours> StudentRegisteredCourses { get; set; }
@@ -34,7 +36,7 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public virtual DbSet<TeacherRegisteredCours> TeacherRegisteredCourses { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Viewer_Table> Viewer_Table { get; set; }
-        public virtual DbSet<Administrator> Administrators { get; set; }
-        public virtual DbSet<URL> URLs { get; set; }
+        public virtual DbSet<Announcemnet> Announcemnets { get; set; }
+        public virtual DbSet<NEWS> NEWS { get; set; }
     }
 }

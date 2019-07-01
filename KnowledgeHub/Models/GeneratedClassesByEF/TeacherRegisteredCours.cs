@@ -17,7 +17,8 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TeacherRegisteredCours()
         {
-            this.URLs = new HashSet<URL>();
+            this.CoursesVideosURLs = new HashSet<CoursesVideosURL>();
+            this.CoursesVideosURLs1 = new HashSet<CoursesVideosURL>();
         }
     
         public int id { get; set; }
@@ -28,6 +29,8 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
         public string Days { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<URL> URLs { get; set; }
+        public virtual ICollection<CoursesVideosURL> CoursesVideosURLs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CoursesVideosURL> CoursesVideosURLs1 { get; set; }
     }
 }

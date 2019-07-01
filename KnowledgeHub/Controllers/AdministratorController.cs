@@ -34,5 +34,41 @@ namespace KnowledgeHub.Controllers
             return View(qry);
         }
 
+        public ActionResult NEWS()
+        {        
+            return View();
+        }
+
+
+        public ActionResult Announcement()
+        {
+           return View();
+        }
+
+        public JsonResult addNEWS(string NEWS)
+        {
+            NEWS oNEWS = new NEWS
+            {
+                News1 = NEWS,
+                
+            };
+
+            db.NEWS.Add(oNEWS);
+            db.SaveChanges();
+            return Json("",JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult addAnnounce(string anno)
+        {
+            Announcemnet oannounce = new Announcemnet
+            {
+                Announcement = anno,
+
+            };
+
+            db.Announcemnets.Add(oannounce);
+            db.SaveChanges();
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
     }
 }

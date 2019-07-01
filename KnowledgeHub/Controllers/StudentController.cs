@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using KnowledgeHub.Models.GeneratedClassesByEF;
 using KnowledgeHub.Models.ModelClasses;
+using Newtonsoft.Json;
 
 namespace KnowledgeHub.Controllers
 {
@@ -37,6 +38,8 @@ namespace KnowledgeHub.Controllers
 
         public ActionResult LadingPage(int userid)
         {
+            var announc = db.Announcemnets.ToList();
+            ViewBag.AnnoList = announc;
             //var user = db.Viewer_Table.Where(x => x.Viewer_Email == email).FirstOrDefault();
             var student = db.Viewer_Table.Where(x => x.UserID == userid).FirstOrDefault();
 
@@ -81,7 +84,17 @@ namespace KnowledgeHub.Controllers
             return View(qry);
         }
 
+        public ActionResult LatestNews(int id)
+        {
+            
+            ViewBag.Viewer_id = id;
 
+            var student = db.Viewer_Table.Where(x => x.Viewer_ID == id).FirstOrDefault();
+            ViewBag.UserID = student.UserID;
+
+            var qry = db.NEWS.ToList();
+            return View(qry);
+        }
 
 
         public JsonResult InsertStudentRegisteredCourses(List<TeacherRegisteredCours> data)
@@ -111,6 +124,14 @@ namespace KnowledgeHub.Controllers
             {
                 return Json("SelectOne", JsonRequestBehavior.AllowGet);
             }
+        }
+
+        public JsonResult ShowURL(int CourseId)
+        {
+            List<CoursesVideosURL> qry = new List<CoursesVideosURL>();
+            qry.AddRange(db.CoursesVideosURLs.Where(x=>x.Course_id == CourseId).ToList());
+            //JsonConvert.SerializeObject(qry);
+            return Json(qry);
         }
     }
 }

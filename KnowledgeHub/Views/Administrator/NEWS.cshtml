@@ -1,0 +1,76 @@
+﻿@model KnowledgeHub.Models.GeneratedClassesByEF.NEWS
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Admin Publish News</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/all.css" rel="stylesheet" />
+    <link href="~/Content/adminPublishNews.css" rel="stylesheet">
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="menu">
+                    <img class="logo" src="~/Image/logo1.png">
+                    <ul>
+                        <li>@Html.ActionLink("HOME", "Index", new { id = "" })</li>
+                        <li>@Html.ActionLink("REGISTERED TEACHERS", "RegisteredTeacherCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("REGISTERED STUDENTS", "RegisteredStudentCourses", new { id = "" })</li>
+                        <li>@Html.ActionLink("COURSES TIMETABLE", "TimeTable", new { id = "" })</li>
+                        <li>@Html.ActionLink("PUBLISH NEWS", "NEWS", new { id = "" })</li>
+                        <li>@Html.ActionLink("MAKE ANNOUNCEMENT", "Announcement", new { id = "" })</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <h3>Publish News</h3>
+                <div class="news">
+                    <form>
+                        <textarea id="msg" placeholder="Enter The News"></textarea>
+                       
+                    </form>
+                    <br />
+                    <input type="button" value="SEND" onclick="AddNEWS()">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+
+    function AddNEWS() {
+        debugger;
+       
+        var html = '';
+        $.ajax({
+            url: "/Administrator/addNEWS",
+            data: JSON.stringify({
+                "NEWS": $("#msg").val(),
+              }),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+              
+                alert("NEWS Added Successfully");
+                document.getElementById('msg').value = "";
+            },
+            error: function () {
+                alert("Oops, something wrong happened");
+            }
+        });
+
+    }
+</script>

@@ -33,5 +33,9 @@ namespace KnowledgeHub.Models
         public System.Data.Entity.DbSet<KnowledgeHub.Models.GeneratedClassesByEF.StudentRegisteredCours> StudentRegisteredCours { get; set; }
 
         public System.Data.Entity.DbSet<KnowledgeHub.Models.GeneratedClassesByEF.TeacherRegisteredCours> TeacherRegisteredCours { get; set; }
+
+        public System.Data.Entity.DbSet<KnowledgeHub.Models.GeneratedClassesByEF.NEWS> NEWS { get; set; }
+
+        public System.Data.Entity.DbSet<KnowledgeHub.Models.GeneratedClassesByEF.Announcemnet> Announcemnets { get; set; }
     }
 }

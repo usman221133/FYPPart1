@@ -27,7 +27,7 @@
                         <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.FirstOrDefault().viewer_id })</li>
                         <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.FirstOrDefault().viewer_id })</li>
                         <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.FirstOrDefault().viewer_id })</li>
-                        <li><a href="studentLatestNews.html">LATEST NEWS</a></li>
+                        <li>@Html.ActionLink("LATEST NEWS", "LatestNews", new { id = Model.FirstOrDefault().viewer_id })</li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
                     {
                         <div class="col-sm-6">
                             <div class="class1">
-                                <a href="#">
+                                <a href="#"onclick="openModal(@item.viewer_courseid)">
                                     <div class="class11">
                                         @*<h4>Computer Programing</h4>
                                         <h6>Monday</h6>
@@ -83,5 +83,82 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="col-md-12">
+
+        <div class="modal" id="ModalCourses" tabindex="-1" style="display:none">
+            <div class="modal-dialog">
+                <div class="modal-content" style="background:#F7F9FA;height: 236px;">
+                    <div class="modal-header" style="background:#F7F9FA">
+
+                        <h4>Course Tutorial URL(s)</h4><span id="btnCloseRFIPU" style="float:right; cursor:pointer;"><img src="~/Image/1024px-Crystal_Clear_action_button_cancel.svg.png" style="width:15px" /></span>
+
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Video URL</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="CourseURLTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnCloseRFIPU").click(function () {
+            $("#ModalCourses").hide();
+        });
+
+
+    });
+    function openModal(id)
+    {
+        debugger
+ 
+        var html = '';
+        $.ajax({
+            url: "/Student/ShowURL",
+            data: JSON.stringify({ "CourseId": id }),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                debugger
+                $.each(result, function (key, item) {
+                    debugger
+                    html += '<tr>';
+                    html += '<td>' +item.CourseURL+  '</td>';
+                    html += '</tr>';
+
+                });
+                $("#CourseURLTable").html(html);
+                $("#ModalCourses").show();
+            },
+            error: function () {
+                alert("Oops, something wrong happened");
+            }
+        });
+
+        
+    }
+
+
+</script>

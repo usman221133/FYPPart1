@@ -27,7 +27,7 @@
                         <li>@Html.ActionLink("REGISTRATION", "TeacherRegisterCourse", new { id = Model.FirstOrDefault().TeacherId })</li>
                         <li>@Html.ActionLink("TIME TABLE", "TimeTable", new { id = Model.FirstOrDefault().TeacherId })</li>
                         <li>@Html.ActionLink("CLASS ROOM", "Classroom", new { id = Model.FirstOrDefault().TeacherId })</li>
-                        <li><a href="teacherLatestNews.html">LATEST NEWS</a></li>
+                        <li>@Html.ActionLink("LATEST NEWS", "LatestNews", new { id = Model.FirstOrDefault().TeacherId })</li>
                     </ul>
                 </div>
             </div>
@@ -85,36 +85,69 @@
 </html>
 
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog" style="display:none">
-    <div class="modal-dialog" id="myModalDialogue" >
+<div class="col-md-12">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Modal Header</h4>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the modal.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    <div class="modal" id="ModalCourses" tabindex="-1" style="display:none">
+        <div class="modal-dialog">
+            <div class="modal-content" style="background:#F7F9FA;height: 236px;">
+                <div class="modal-header" style="background:#F7F9FA">
+
+                    <h4>Add URL(s) For Selected Course</h4><span id="btnCloseRFIPU" style="float:right; cursor:pointer;"><img src="~/Image/1024px-Crystal_Clear_action_button_cancel.svg.png" style="width:15px" /></span>
+
+                </div>
+                <div class="modal-body">
+                    <label>Enter URL</label>&nbsp;@*<span class="satrikred">*</span>*@<br />
+                    <input type="text" id="urlCourse" style="width:495px"/>
+              
+                </div>
+               <div class="col-md-12"><input type="button" id="btnAddURL" value="Add" class="btn btn-danger rejectBtn" onclick='AddURL()' /></div> 
+              
             </div>
         </div>
-
     </div>
 </div>
 
 
 
 <script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#btnCloseRFIPU").click(function () {
+            $("#ModalCourses").hide();
+        });
 
 
+    });
+    var SelectedCourseId;
     function openModal(id)
     {
-        $("#myModal").show();
-        //alert(id);
+        SelectedCourseId = id;
+        $("#ModalCourses").show();       
+       
+         
     }
 
+    function AddURL()
+    {
+        var html = '';
+        $.ajax({
+            url: "/Teacher/InsertURL",
+            data: JSON.stringify({
+                "URL": $("#urlCourse").val(),
+                "CourseId": SelectedCourseId
+            }),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+
+                alert("URL Added Successfully");
+                document.getElementById('urlCourse').value = "";
+            },
+            error: function () {
+                alert("Oops, something wrong happened");
+            }
+        });
+    }
 
 </script>

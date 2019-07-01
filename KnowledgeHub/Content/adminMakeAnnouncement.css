@@ -61,14 +61,39 @@ h3
     font-weight: bold;
 }
 
-table
+.news
 {
-    margin-top: 50px;
+    
 }
 
-input[type="checkbox"]
+textarea
 {
+    margin-top: 60px;
+    border-radius: 8px;
+    background-image: url(../Image/bg14.jpg);
+    border: none;
+    border-width: 2px;
+    color: white;
+    padding-left: 5px;
+    width: 60%;
+    height: 150px;
+}
+
+input[type=submit] 
+{
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    background-color: gray;
+    padding: 8px 40px;
+    font-weight: bold;
+    margin-top: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+}
+  
+input[type=submit]:hover 
+{
+    background-color: black;
+    color: white;
 }

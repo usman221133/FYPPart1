@@ -15,6 +15,13 @@
           <Property Name="FullName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="Announcemnet">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Announcement" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
         <EntityType Name="Courses">
           <Key>
             <PropertyRef Name="id" />
@@ -22,6 +29,14 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="coursename" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="coursecode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoursesVideosURLs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseURL" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Course_id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Login_Table">
           <Key>
@@ -32,6 +47,13 @@
           <Property Name="Presenter_ID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Login_Password" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NEWS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="News" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="Presenter_Table">
           <Key>
@@ -97,14 +119,6 @@
           <Property Name="Timing" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Days" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityType Name="URLs">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CourseURL" Type="nvarchar" MaxLength="4000" Nullable="false" />
-          <Property Name="Course_id" Type="int" />
-        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="UserID" />
@@ -139,6 +153,18 @@
           <Property Name="DOB_Year" Type="nvarchar" MaxLength="50" />
           <Property Name="UserID" Type="int" />
         </EntityType>
+        <Association Name="FK__CoursesVi__Cours__49C3F6B7">
+          <End Role="TeacherRegisteredCourses" Type="Self.TeacherRegisteredCourses" Multiplicity="1" />
+          <End Role="CoursesVideosURLs" Type="Self.CoursesVideosURLs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherRegisteredCourses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CoursesVideosURLs">
+              <PropertyRef Name="Course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Presenter__UserI__412EB0B6">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Presenter_Table" Type="Self.Presenter_Table" Multiplicity="*" />
@@ -152,13 +178,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__URLs__Course_id__440B1D61">
-          <End Role="TeacherRegisteredCourses" Type="Self.TeacherRegisteredCourses" Multiplicity="0..1" />
-          <End Role="URLs" Type="Self.URLs" Multiplicity="*" />
+          <End Role="TeacherRegisteredCourses" Type="Self.TeacherRegisteredCourses" Multiplicity="1" />
+          <End Role="CoursesVideosURLs" Type="Self.CoursesVideosURLs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TeacherRegisteredCourses">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="URLs">
+            <Dependent Role="CoursesVideosURLs">
               <PropertyRef Name="Course_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -201,23 +227,29 @@
         </Association>
         <EntityContainer Name="KnwoledgeHubModelStoreContainer">
           <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Announcemnet" EntityType="Self.Announcemnet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoursesVideosURLs" EntityType="Self.CoursesVideosURLs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login_Table" EntityType="Self.Login_Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NEWS" EntityType="Self.NEWS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="StudentRegisteredCourses" EntityType="Self.StudentRegisteredCourses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbl_roles" EntityType="Self.tbl_roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TeacherRegisteredCourses" EntityType="Self.TeacherRegisteredCourses" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="URLs" EntityType="Self.URLs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CoursesVi__Cours__49C3F6B7" Association="Self.FK__CoursesVi__Cours__49C3F6B7">
+            <End Role="TeacherRegisteredCourses" EntitySet="TeacherRegisteredCourses" />
+            <End Role="CoursesVideosURLs" EntitySet="CoursesVideosURLs" />
+          </AssociationSet>
           <AssociationSet Name="FK__Presenter__UserI__412EB0B6" Association="Self.FK__Presenter__UserI__412EB0B6">
             <End Role="Users" EntitySet="Users" />
             <End Role="Presenter_Table" EntitySet="Presenter_Table" />
           </AssociationSet>
           <AssociationSet Name="FK__URLs__Course_id__440B1D61" Association="Self.FK__URLs__Course_id__440B1D61">
             <End Role="TeacherRegisteredCourses" EntitySet="TeacherRegisteredCourses" />
-            <End Role="URLs" EntitySet="URLs" />
+            <End Role="CoursesVideosURLs" EntitySet="CoursesVideosURLs" />
           </AssociationSet>
           <AssociationSet Name="FK__Viewer_Ta__UserI__403A8C7D" Association="Self.FK__Viewer_Ta__UserI__403A8C7D">
             <End Role="Users" EntitySet="Users" />
@@ -236,6 +268,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="KnwoledgeHubModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrator">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cours">
           <Key>
             <PropertyRef Name="id" />
@@ -243,6 +285,16 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="coursename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="coursecode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CoursesVideosURL">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseURL" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Course_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TeacherRegisteredCours" Relationship="Self.FK__CoursesVi__Cours__49C3F6B7" FromRole="CoursesVideosURLs" ToRole="TeacherRegisteredCourses" />
+          <NavigationProperty Name="TeacherRegisteredCours1" Relationship="Self.FK__URLs__Course_id__440B1D61" FromRole="CoursesVideosURLs" ToRole="TeacherRegisteredCourses" />
         </EntityType>
         <EntityType Name="Login_Table">
           <Key>
@@ -321,7 +373,8 @@
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
           <Property Name="Timing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Days" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="URLs" Relationship="KnwoledgeHubModel.FK__URLs__Course_id__440B1D61" FromRole="TeacherRegisteredCours" ToRole="URL" />
+          <NavigationProperty Name="CoursesVideosURLs" Relationship="Self.FK__CoursesVi__Cours__49C3F6B7" FromRole="TeacherRegisteredCourses" ToRole="CoursesVideosURLs" />
+          <NavigationProperty Name="CoursesVideosURLs1" Relationship="Self.FK__URLs__Course_id__440B1D61" FromRole="TeacherRegisteredCourses" ToRole="CoursesVideosURLs" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -361,6 +414,30 @@
           <NavigationProperty Name="Login_Table" Relationship="Self.FK_Login_Table_Login_Table" FromRole="Viewer_Table" ToRole="Login_Table" />
           <NavigationProperty Name="User" Relationship="Self.FK__Viewer_Ta__UserI__403A8C7D" FromRole="Viewer_Table" ToRole="Users" />
         </EntityType>
+        <Association Name="FK__CoursesVi__Cours__49C3F6B7">
+          <End Role="TeacherRegisteredCourses" Type="Self.TeacherRegisteredCours" Multiplicity="1" />
+          <End Role="CoursesVideosURLs" Type="Self.CoursesVideosURL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherRegisteredCourses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CoursesVideosURLs">
+              <PropertyRef Name="Course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__URLs__Course_id__440B1D61">
+          <End Role="TeacherRegisteredCourses" Type="Self.TeacherRegisteredCours" Multiplicity="1" />
+          <End Role="CoursesVideosURLs" Type="Self.CoursesVideosURL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TeacherRegisteredCourses">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CoursesVideosURLs">
+              <PropertyRef Name="Course_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Login_Table_Login_Table">
           <End Role="Viewer_Table" Type="Self.Viewer_Table" Multiplicity="1" />
           <End Role="Login_Table" Type="Self.Login_Table" Multiplicity="*" />
@@ -410,7 +487,9 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="KnwoledgeHubEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrators" EntityType="Self.Administrator" />
           <EntitySet Name="Courses" EntityType="Self.Cours" />
+          <EntitySet Name="CoursesVideosURLs" EntityType="Self.CoursesVideosURL" />
           <EntitySet Name="Login_Table" EntityType="Self.Login_Table" />
           <EntitySet Name="Presenter_Table" EntityType="Self.Presenter_Table" />
           <EntitySet Name="StudentRegisteredCourses" EntityType="Self.StudentRegisteredCours" />
@@ -419,6 +498,14 @@
           <EntitySet Name="TeacherRegisteredCourses" EntityType="Self.TeacherRegisteredCours" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="Viewer_Table" EntityType="Self.Viewer_Table" />
+          <AssociationSet Name="FK__CoursesVi__Cours__49C3F6B7" Association="Self.FK__CoursesVi__Cours__49C3F6B7">
+            <End Role="TeacherRegisteredCourses" EntitySet="TeacherRegisteredCourses" />
+            <End Role="CoursesVideosURLs" EntitySet="CoursesVideosURLs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__URLs__Course_id__440B1D61" Association="Self.FK__URLs__Course_id__440B1D61">
+            <End Role="TeacherRegisteredCourses" EntitySet="TeacherRegisteredCourses" />
+            <End Role="CoursesVideosURLs" EntitySet="CoursesVideosURLs" />
+          </AssociationSet>
           <AssociationSet Name="FK_Login_Table_Login_Table" Association="Self.FK_Login_Table_Login_Table">
             <End Role="Viewer_Table" EntitySet="Viewer_Table" />
             <End Role="Login_Table" EntitySet="Login_Table" />
@@ -435,56 +522,55 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Viewer_Table" EntitySet="Viewer_Table" />
           </AssociationSet>
-          <EntitySet Name="Administrators" EntityType="KnwoledgeHubModel.Administrator" />
-          <EntitySet Name="URLs" EntityType="KnwoledgeHubModel.URL" />
-          <AssociationSet Name="FK__URLs__Course_id__440B1D61" Association="KnwoledgeHubModel.FK__URLs__Course_id__440B1D61">
-            <End Role="TeacherRegisteredCours" EntitySet="TeacherRegisteredCourses" />
-            <End Role="URL" EntitySet="URLs" />
-          </AssociationSet>
+          <EntitySet Name="Announcemnets" EntityType="KnwoledgeHubModel.Announcemnet" />
+          <EntitySet Name="NEWS" EntityType="KnwoledgeHubModel.NEWS" />
         </EntityContainer>
-        <EntityType Name="Administrator">
+        <EntityType Name="Announcemnet">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="FullName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Announcement" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="URL">
+        <EntityType Name="NEWS">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CourseURL" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Course_id" Type="Int32" />
-          <NavigationProperty Name="TeacherRegisteredCours" Relationship="KnwoledgeHubModel.FK__URLs__Course_id__440B1D61" FromRole="URL" ToRole="TeacherRegisteredCours" />
+          <Property Name="News1" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK__URLs__Course_id__440B1D61">
-          <End Type="KnwoledgeHubModel.TeacherRegisteredCours" Role="TeacherRegisteredCours" Multiplicity="0..1" />
-          <End Type="KnwoledgeHubModel.URL" Role="URL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TeacherRegisteredCours">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="URL">
-              <PropertyRef Name="Course_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="KnwoledgeHubModelStoreContainer" CdmEntityContainer="KnwoledgeHubEntities">
+          <EntitySetMapping Name="Administrators">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Administrator">
+              <MappingFragment StoreEntitySet="Administrator">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Courses">
             <EntityTypeMapping TypeName="KnwoledgeHubModel.Cours">
               <MappingFragment StoreEntitySet="Courses">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="coursename" ColumnName="coursename" />
                 <ScalarProperty Name="coursecode" ColumnName="coursecode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoursesVideosURLs">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.CoursesVideosURL">
+              <MappingFragment StoreEntitySet="CoursesVideosURLs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="CourseURL" ColumnName="CourseURL" />
+                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -604,22 +690,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Administrators">
-            <EntityTypeMapping TypeName="KnwoledgeHubModel.Administrator">
-              <MappingFragment StoreEntitySet="Administrator">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <EntitySetMapping Name="Announcemnets">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.Announcemnet">
+              <MappingFragment StoreEntitySet="Announcemnet">
+                <ScalarProperty Name="Announcement" ColumnName="Announcement" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="URLs">
-            <EntityTypeMapping TypeName="KnwoledgeHubModel.URL">
-              <MappingFragment StoreEntitySet="URLs">
-                <ScalarProperty Name="Course_id" ColumnName="Course_id" />
-                <ScalarProperty Name="CourseURL" ColumnName="CourseURL" />
+          <EntitySetMapping Name="NEWS">
+            <EntityTypeMapping TypeName="KnwoledgeHubModel.NEWS">
+              <MappingFragment StoreEntitySet="NEWS">
+                <ScalarProperty Name="News1" ColumnName="News" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

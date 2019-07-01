@@ -12,12 +12,9 @@ namespace KnowledgeHub.Models.GeneratedClassesByEF
     using System;
     using System.Collections.Generic;
     
-    public partial class URL
+    public partial class Announcemnet
     {
         public int id { get; set; }
-        public string CourseURL { get; set; }
-        public Nullable<int> Course_id { get; set; }
-    
-        public virtual TeacherRegisteredCours TeacherRegisteredCours { get; set; }
+        public string Announcement { get; set; }
     }
 }

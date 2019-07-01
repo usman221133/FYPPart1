@@ -17,20 +17,21 @@ namespace KnowledgeHub.Controllers
             //var res = db.Presenter_Table.Where(x => x.Presenter_Email == User.Email).ToList();
 
             //return View(res);
-            return RedirectToAction("LandingPage",new {userid= User.UserID });
+            return RedirectToAction("LandingPage", new { userid = User.UserID });
         }
 
         [HttpGet]
         public ActionResult ViewProfile(int id)
         {
-           // var User = ((List<User>)Session["UserSession"])[0];
+            // var User = ((List<User>)Session["UserSession"])[0];
             var student = db.Presenter_Table.Where(x => x.Presenter_ID == id).FirstOrDefault();
             return View(student);
         }
 
         public ActionResult LandingPage(int userid)
         {
-           
+            var announc = db.Announcemnets.ToList();
+            ViewBag.AnnoList = announc;
             var teacher = db.Presenter_Table.Where(x => x.UserID == userid).FirstOrDefault();
 
             //for registered courses
@@ -46,7 +47,7 @@ namespace KnowledgeHub.Controllers
             var teacher = db.Presenter_Table.Where(x => x.Presenter_ID == id).FirstOrDefault();
 
             //for registered courses
-            var qry = db.TeacherRegisteredCourses.Where(s=>s.TeacherId==teacher.Presenter_ID).ToList();
+            var qry = db.TeacherRegisteredCourses.Where(s => s.TeacherId == teacher.Presenter_ID).ToList();
             ViewBag.presenterID = id;
             ViewBag.UserID = teacher.UserID;
 
@@ -73,21 +74,48 @@ namespace KnowledgeHub.Controllers
             return View(qry);
         }
 
+        public ActionResult LatestNews(int id)
+        {
+
+            ViewBag.presenterID = id;
+
+            var teacher = db.Presenter_Table.Where(x => x.Presenter_ID == id).FirstOrDefault();
+            ViewBag.UserID = teacher.UserID;
+
+            var qry = db.NEWS.ToList();
+            return View(qry);
+        }
+
+
         public JsonResult InsertCourse(string courseName, string DDLDays, string DDLTimings, int teacherId)
         {
-            var qry = db.Presenter_Table.Where(f=>f.Presenter_ID == teacherId).FirstOrDefault();
+            var qry = db.Presenter_Table.Where(f => f.Presenter_ID == teacherId).FirstOrDefault();
             TeacherRegisteredCours oTRC = new TeacherRegisteredCours
             {
-                CourseName =courseName,
+                CourseName = courseName,
                 TeacherId = teacherId,
                 TeacherName = qry.Presenter_Name,
                 Timing = DDLTimings,
-                Days=DDLDays
+                Days = DDLDays
             };
 
             db.TeacherRegisteredCourses.Add(oTRC);
             db.SaveChanges();
-            return Json("",JsonRequestBehavior.AllowGet);
+            return Json("", JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult InsertURL(string URL, int CourseId)
+        {
+            CoursesVideosURL oURL = new CoursesVideosURL
+            {
+                Course_id = CourseId,
+                CourseURL = URL
+            };
+
+            db.CoursesVideosURLs.Add(oURL);
+            db.SaveChanges();
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
     }
